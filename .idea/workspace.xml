@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bb223b1e-9ffa-4732-8d14-314d54166c3c" name="Changes" comment="Add project files">
-      <change afterPath="$PROJECT_DIR$/images/coffee-house.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/team-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/team-2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/team-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/team-4.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/team-5.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/team-6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/style.css" afterDir="false" />
-    </list>
+    <list default="true" id="bb223b1e-9ffa-4732-8d14-314d54166c3c" name="Changes" comment="Add project files" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
