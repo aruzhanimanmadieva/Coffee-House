@@ -1,586 +1,1329 @@
-/*SOLACE COFFEE HOUSE*/
-
+/* ========================================
+SOLACE COFFEE HOUSE
+Main Stylesheet
+Combined styles for:
+index.html
+about.html
+menu.html
+contact.html
+======================================== */
 
 /* ---------- General Styles ---------- */
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+{
+box-sizing: border-box;
+margin: 0;
+padding: 0;
 }
-
 html {
-    scroll-behavior: smooth;
+scroll-behavior: smooth;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f3eb;
-    color: #3b2921;
-    line-height: 1.6;
+font-family: Arial, Helvetica, sans-serif;
+background-color: #f7f1e8;
+color: #3b2920;
+line-height: 1.6;
 }
 
 img {
-    max-width: 100%;
-    display: block;
+max-width: 100%;
+display: block;
 }
 
 a {
-    text-decoration: none;
+text-decoration: none;
+color: inherit;
 }
 
+/* ========================================
+NAVIGATION
+Supports both existing HTML structures
+======================================== */
 
-/* ---------- Navigation Bar ---------- */
+/* Friend's navigation structure */
 
 header {
-    background-color: #2f211c;
-    width: 100%;
+background-color: #2f211c;
+width: 100%;
 }
 
 nav {
-    width: 90%;
-    min-height: 80px;
-    margin: 0 auto;
-    padding: 1rem 0;
+width: 90%;
+min-height: 80px;
+margin: 0 auto;
+padding: 1rem 0;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+display: flex;
+align-items: center;
+justify-content: space-between;
+
 }
+
+/* Your navigation structure */
+
+.site-header {
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+
+padding: 20px 7vw;
+
+background-color: #2f211c;
+border-bottom: 1px solid #eadcc9;
+
+position: sticky;
+top: 0;
+z-index: 1000;
+
+}
+
+/* ---------- Logo ---------- */
 
 .logo {
-    color: #f8f3eb;
-    font-size: 1.8rem;
-    font-weight: bold;
-    letter-spacing: 3px;
+font-family: Georgia, serif;
+font-size: 28px;
+font-weight: bold;
+color: #f8f3eb;
+letter-spacing: 2px;
 }
 
+/* ---------- Friend's Navigation ---------- */
+
 .nav-links {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+display: flex;
+align-items: center;
+gap: 2rem;
 }
 
 .nav-links a {
-    color: #f8f3eb;
-    font-size: 1rem;
-    padding: 0.5rem 0.2rem;
-    transition: 0.3s;
+color: #f8f3eb;
+font-size: 15px;
+padding: 8px 4px;
+transition: 0.3s;
 }
 
 .nav-links a:hover {
-    color: #d6b28a;
+color: #d6b28a;
 }
 
 .nav-links a.active {
-    color: #d6b28a;
-    border-bottom: 2px solid #d6b28a;
+color: #d6b28a;
+font-weight: bold;
+border-bottom: 2px solid #d6b28a;
 }
 
+/* ---------- Your Navigation ---------- */
 
-/* ---------- Hero Section ---------- */
+.nav-menu {
+display: flex;
+gap: 30px;
+align-items: center;
+}
+
+.nav-menu a {
+font-size: 15px;
+color: #f8f3eb;
+padding: 8px 4px;
+transition: 0.3s;
+}
+
+.nav-menu a:hover {
+color: #d6b28a;
+}
+
+.nav-menu a.active {
+color: #d6b28a;
+font-weight: bold;
+border-bottom: 2px solid #d6b28a;
+}
+
+/* ========================================
+HERO - HOME PAGE
+======================================== */
 
 #hero {
-    min-height: 85vh;
+min-height: 85vh;
 
-    background-image:
-        linear-gradient(rgba(35, 24, 19, 0.55), rgba(35, 24, 19, 0.55)),
-        url("images/coffee-house.jpg");
+background-image:
+    linear-gradient(
+        rgba(35, 24, 19, 0.55),
+        rgba(35, 24, 19, 0.55)
+    ),
+    url("../images/coffee-house.jpg");
 
-    background-size: cover;
-    background-position: center;
+background-size: cover;
+background-position: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
 
-    text-align: center;
-    padding: 4rem 5%;
+text-align: center;
+padding: 4rem 5%;
+
 }
 
+/* ========================================
+HERO - MENU & CONTACT
+======================================== */
+
+.menu-hero,
+.contact-hero {
+min-height: 430px;
+
+display: flex;
+align-items: center;
+justify-content: center;
+
+text-align: center;
+
+padding: 60px 20px;
+
+background-color: #4b3025;
+
+background-image:
+    linear-gradient(
+        rgba(45, 27, 20, 0.62),
+        rgba(45, 27, 20, 0.62)
+    ),
+    url("../images/coffee.jpg");
+
+background-size: cover;
+background-position: center;
+
+}
+
+/* ========================================
+HERO CONTENT
+======================================== */
+
 .hero-content {
-    max-width: 800px;
-    color: white;
+max-width: 800px;
+color: white;
 }
 
 .small-title,
 .section-label {
-    color: #d6b28a;
-    font-size: 0.85rem;
-    font-weight: bold;
-    letter-spacing: 3px;
-    margin-bottom: 1rem;
+color: #d6b28a;
+
+font-size: 0.85rem;
+font-weight: bold;
+
+letter-spacing: 3px;
+
+margin-bottom: 1rem;
+
+}
+
+.menu-hero .small-title,
+.contact-hero .small-title {
+color: #e8c7a7;
 }
 
 .hero-content h1 {
-    font-size: clamp(2.5rem, 6vw, 5rem);
-    line-height: 1.1;
-    margin-bottom: 1.5rem;
+font-family: Georgia, serif;
+
+font-size: clamp(2.5rem, 6vw, 5rem);
+
+line-height: 1.1;
+
+margin-bottom: 1.5rem;
+
+letter-spacing: 1px;
+
 }
 
 .hero-content h1 span {
-    display: block;
-    color: #e2c19d;
+display: block;
+color: #e2c19d;
 }
 
 .hero-text {
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    font-size: 1.1rem;
+max-width: 600px;
+
+margin: 0 auto 2rem;
+
+font-size: 1.1rem;
+
 }
 
+.hero-content p:last-child {
+font-size: 18px;
+color: #f5e8dc;
 
-/* ---------- Buttons ---------- */
+max-width: 600px;
+
+margin: 0 auto;
+
+}
+
+/* ========================================
+BUTTONS
+======================================== */
 
 .main-button,
 .secondary-button {
-    display: inline-block;
+display: inline-block;
 
-    padding: 0.9rem 1.8rem;
-    border-radius: 4px;
+padding: 0.9rem 1.8rem;
 
-    font-weight: bold;
-    transition: 0.3s;
+border-radius: 4px;
+
+font-weight: bold;
+
+transition: 0.3s;
+
 }
 
 .main-button {
-    background-color: #c49a6c;
-    color: #2f211c;
+background-color: #c49a6c;
+color: #2f211c;
 }
 
 .main-button:hover {
-    background-color: #f0d4ad;
-    transform: translateY(-3px);
+background-color: #f0d4ad;
+transform: translateY(-3px);
 }
 
 .secondary-button {
-    background-color: #3b2921;
-    color: white;
-    margin-top: 1rem;
+background-color: #3b2921;
+color: white;
+
+margin-top: 1rem;
+
 }
 
 .secondary-button:hover {
-    background-color: #624536;
+background-color: #624536;
 }
 
+/* ========================================
+SECTION HEADINGS
+======================================== */
 
-/* ---------- Introduction Section ---------- */
+.section-heading {
+text-align: center;
+
+max-width: 650px;
+
+margin: 0 auto 45px;
+
+}
+
+.section-heading h2 {
+font-family: Georgia, serif;
+
+font-size: 42px;
+
+color: #4b3025;
+
+margin-bottom: 10px;
+
+}
+
+.section-heading > p:last-child {
+color: #786459;
+font-size: 16px;
+}
+
+/* ========================================
+HOME PAGE - INTRODUCTION
+======================================== */
 
 .introduction {
-    width: 90%;
-    max-width: 1200px;
+width: 90%;
+max-width: 1200px;
 
-    margin: 0 auto;
-    padding: 6rem 0;
+margin: 0 auto;
 
-    display: flex;
-    align-items: center;
-    gap: 4rem;
+padding: 6rem 0;
+
+display: flex;
+align-items: center;
+
+gap: 4rem;
+
 }
 
 .intro-image,
 .intro-content {
-    width: 50%;
+width: 50%;
 }
 
 .intro-image img {
-    width: 100%;
-    height: 420px;
-    object-fit: cover;
+width: 100%;
+height: 420px;
 
-    border-radius: 12px;
-    border: 5px solid #e4d3bf;
+object-fit: cover;
+
+border-radius: 12px;
+
+border: 5px solid #e4d3bf;
+
 }
 
 .intro-content h2,
 .why-us h2,
 .values h2,
 #visit h2 {
-    font-size: 2.5rem;
-    line-height: 1.2;
-    margin-bottom: 1.2rem;
+font-size: 2.5rem;
+
+line-height: 1.2;
+
+margin-bottom: 1.2rem;
+
 }
 
 .intro-content p {
-    margin-bottom: 1rem;
-}
-
-
-/* ---------- Why Us Section ---------- */
-
-.why-us {
-    background-color: #eee3d5;
-    text-align: center;
-
-    padding: 6rem 5%;
-}
-
-.section-description {
-    max-width: 600px;
-    margin: 0 auto 3rem;
-}
-
-.features {
-    max-width: 1100px;
-    margin: 0 auto;
-
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-}
-
-.feature {
-    background-color: #fdfaf6;
-
-    width: 30%;
-    min-height: 250px;
-
-    padding: 2rem;
-
-    border: 1px solid #dfcdb9;
-    border-radius: 10px;
-
-    transition: 0.3s;
-}
-
-.feature:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(59, 41, 33, 0.12);
-}
-
-.feature-icon {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.feature h3 {
-    margin-bottom: 0.8rem;
-}
-
-
-/* ---------- Values Section ---------- */
-
-.values {
-    width: 90%;
-    max-width: 1000px;
-
-    margin: 0 auto;
-    padding: 6rem 0;
-}
-
-.values-content {
-    background-color: #3b2921;
-    color: white;
-
-    padding: 3rem;
-border-radius: 12px;
-
-    text-align: center;
-}
-
-.values-list {
-    list-style-position: inside;
-    margin-top: 1.5rem;
-}
-
-.values-list li {
-    margin-bottom: 0.7rem;
-}
-
-
-/* ---------- Call To Action ---------- */
-
-#visit {
-    background-color: #d8c0a5;
-
-    text-align: center;
-
-    padding: 6rem 5vw;
-}
-
-#visit p {
-    max-width: 600px;
-    margin: 0 auto 1.5rem;
-}
-
-
-/* ---------- Footer ---------- */
-
-footer {
-    background-color: #2f211c;
-    color: #f8f3eb;
-
-    text-align: center;
-
-    padding: 1.5rem;
-}
-
-footer p {
-    font-size: 0.9rem;
-}
-
-
-/* ---------- Responsive Design ---------- */
-
-@media (max-width: 768px) {
-
-    nav {
-        flex-direction: column;
-        gap: 1rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .introduction {
-        flex-direction: column;
-    }
-
-    .intro-image,
-    .intro-content {
-        width: 100%;
-    }
-
-    .features {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .feature {
-        width: 100%;
-        max-width: 450px;
-    }
-
-    .intro-image img {
-        height: 300px;
-    }
+margin-bottom: 1rem;
 }
 
 /* ========================================
-   ABOUT US PAGE
-   ======================================== */
+HOME PAGE - WHY US
+======================================== */
 
+.why-us {
+background-color: #eee3d5;
 
-/* ---------- About Hero ---------- */
+text-align: center;
+
+padding: 6rem 5%;
+
+}
+
+.section-description {
+max-width: 600px;
+
+margin: 0 auto 3rem;
+
+}
+
+.features {
+max-width: 1100px;
+
+margin: 0 auto;
+
+display: flex;
+
+justify-content: center;
+
+gap: 2rem;
+
+}
+
+.feature {
+background-color: #fdfaf6;
+
+width: 30%;
+min-height: 250px;
+
+padding: 2rem;
+
+border: 1px solid #dfcdb9;
+
+border-radius: 10px;
+
+transition: 0.3s;
+
+}
+
+.feature:hover {
+transform: translateY(-8px);
+
+box-shadow:
+    0 10px 25px rgba(59, 41, 33, 0.12);
+
+}
+
+.feature-icon {
+font-size: 2.5rem;
+
+margin-bottom: 1rem;
+
+}
+
+.feature h3 {
+margin-bottom: 0.8rem;
+}
+
+/* ========================================
+HOME PAGE - VALUES
+======================================== */
+
+.values {
+width: 90%;
+max-width: 1000px;
+
+margin: 0 auto;
+
+padding: 6rem 0;
+
+}
+
+.values-content {
+background-color: #3b2921;
+
+color: white;
+
+padding: 3rem;
+
+border-radius: 12px;
+
+text-align: center;
+
+}
+
+.values-list {
+list-style-position: inside;
+
+margin-top: 1.5rem;
+
+}
+
+.values-list li {
+margin-bottom: 0.7rem;
+}
+
+/* ========================================
+HOME PAGE - VISIT / CTA
+======================================== */
+
+#visit {
+background-color: #d8c0a5;
+
+text-align: center;
+
+padding: 6rem 5vw;
+
+}
+
+#visit p {
+max-width: 600px;
+
+margin: 0 auto 1.5rem;
+
+}
+
+/* ========================================
+ABOUT US PAGE
+======================================== */
 
 .about-hero {
-    min-height: 45vh;
+min-height: 45vh;
 
-    background-image:
-        linear-gradient(rgba(47, 33, 28, 0.65), rgba(47, 33, 28, 0.65)),
-        url("images/coffee-house.jpg");
+background-image:
+    linear-gradient(
+        rgba(47, 33, 28, 0.65),
+        rgba(47, 33, 28, 0.65)
+    ),
+    url("../images/coffee-house.jpg");
 
-    background-size: cover;
-    background-position: center;
+background-size: cover;
+background-position: center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+display: flex;
+align-items: center;
+justify-content: center;
 
-    text-align: center;
-    padding: 4rem 5%;
+text-align: center;
+
+padding: 4rem 5%;
+
 }
 
 .about-hero-content {
-    color: white;
-    max-width: 700px;
+color: white;
+
+max-width: 700px;
+
 }
 
 .about-hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-}
+font-size: 3.5rem;
 
+margin-bottom: 1rem;
+
+}
 
 /* ---------- Our Story ---------- */
 
 .story {
-    width: 90%;
-    max-width: 900px;
+width: 90%;
+max-width: 900px;
 
-    margin: 0 auto;
-    padding: 6rem 0;
+margin: 0 auto;
 
-    text-align: center;
+padding: 6rem 0;
+
+text-align: center;
+
 }
 
 .story-content {
-    background-color: #fdfaf6;
+background-color: #fdfaf6;
 
-    padding: 3rem;
+padding: 3rem;
 
-    border: 1px solid #dfcdb9;
-    border-radius: 12px;
+border: 1px solid #dfcdb9;
+
+border-radius: 12px;
+
 }
 
 .story-content h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1.5rem;
+font-size: 2.5rem;
+
+margin-bottom: 1.5rem;
+
 }
 
 .story-content p {
-    margin-bottom: 1rem;
+margin-bottom: 1rem;
 }
 
-
-/* ---------- Our Values ---------- */
+/* ---------- About Values ---------- */
 
 .about-values {
-    background-color: #eee3d5;
+background-color: #eee3d5;
 
-    text-align: center;
+text-align: center;
 
-    padding: 6rem 5%;
+padding: 6rem 5%;
+
 }
 
 .about-values h2 {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+font-size: 2.5rem;
+
+margin-bottom: 3rem;
+
 }
 
 .value-cards {
-    max-width: 1100px;
+max-width: 1100px;
 
-    margin: 0 auto;
+margin: 0 auto;
 
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
+display: flex;
+
+justify-content: center;
+
+gap: 2rem;
+
 }
 
 .value-card {
-    background-color: #fdfaf6;
+background-color: #fdfaf6;
 
-    width: 30%;
-    min-height: 240px;
+width: 30%;
+min-height: 240px;
 
-    padding: 2rem;
+padding: 2rem;
 
-    border: 1px solid #dfcdb9;
-    border-radius: 10px;
+border: 1px solid #dfcdb9;
 
-    transition: 0.3s;
+border-radius: 10px;
+
+transition: 0.3s;
+
 }
 
 .value-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(59, 41, 33, 0.12);
+transform: translateY(-8px);
+
+box-shadow:
+    0 10px 25px rgba(59, 41, 33, 0.12);
+
 }
 
 .value-card h3 {
-    margin-bottom: 0.8rem;
+margin-bottom: 0.8rem;
 }
 
-
-/* ---------- Team Sections ---------- */
+/* ---------- Team ---------- */
 
 .team,
 .service-team {
-    width: 90%;
-    max-width: 1100px;
+width: 90%;
+max-width: 1100px;
 
-    margin: 0 auto;
+margin: 0 auto;
 
-    padding: 6rem 0;
+padding: 6rem 0;
 
-    text-align: center;
+text-align: center;
+
 }
 
 .service-team {
-    padding-top: 0;
+padding-top: 0;
 }
 
 .team h2,
 .service-team h2 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
+font-size: 2.5rem;
 
+margin-bottom: 1rem;
+
+}
 
 /* ---------- Team Members ---------- */
 
 .team-members {
-    margin-top: 3rem;
+margin-top: 3rem;
 
-    display: flex;
-    justify-content: center;
-    gap: 2.5rem;
+display: flex;
 
-    flex-wrap: wrap;
+justify-content: center;
+
+gap: 2.5rem;
+
+flex-wrap: wrap;
+
 }
 
 .team-member {
-    width: 30%;
-    min-width: 200px;
+width: 30%;
+min-width: 200px;
 
-    padding: 1.5rem;
+padding: 1.5rem;
 
-    background-color: #fdfaf6;
+background-color: #fdfaf6;
 
-    border: 1px solid #dfcdb9;
-    border-radius: 10px;
+border: 1px solid #dfcdb9;
 
-    transition: 0.3s;
+border-radius: 10px;
+
+transition: 0.3s;
+
 }
 
 .team-member:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 10px 25px rgba(59, 41, 33, 0.12);
+transform: translateY(-6px);
+
+box-shadow:
+    0 10px 25px rgba(59, 41, 33, 0.12);
+
 }
 
-
-/* Circular Profile Images */
-
 .team-member img {
-    width: 160px;
-    height: 160px;
+width: 160px;
+height: 160px;
 
-    margin: 0 auto 1.2rem;
+margin: 0 auto 1.2rem;
 
-    border-radius: 50%;
+border-radius: 50%;
 
-    object-fit: cover;
+object-fit: cover;
 
-    border: 5px solid #d8c0a5;
+border: 5px solid #d8c0a5;
+
 }
 
 .team-member h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.3rem;
+font-size: 1.3rem;
+
+margin-bottom: 0.3rem;
+
 }
 
 .team-member p {
-    color: #806653;
+color: #806653;
 }
 
+/* ========================================
+MENU PAGE
+======================================== */
 
-/* ---------- About Page Mobile ---------- */
+.menu-section {
+padding: 90px 7vw;
+
+background-color: #f7f1e8;
+
+}
+
+.menu-grid {
+max-width: 1200px;
+
+margin: 0 auto;
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 28px;
+
+}
+
+.menu-card {
+background-color: #fffaf3;
+
+border: 1px solid #eadcc9;
+
+border-radius: 18px;
+
+overflow: hidden;
+
+box-shadow:
+    0 8px 25px rgba(74, 48, 37, 0.08);
+
+transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+
+}
+
+.menu-card:hover {
+transform: translateY(-8px);
+
+box-shadow:
+    0 18px 35px rgba(74, 48, 37, 0.16);
+
+}
+
+.menu-card > img {
+width: 100%;
+
+height: 230px;
+
+object-fit: cover;
+
+}
+
+.menu-card-content {
+padding: 24px;
+}
+
+.menu-card h3 {
+font-family: Georgia, serif;
+
+font-size: 25px;
+
+color: #4b3025;
+
+margin-bottom: 10px;
+
+}
+
+.menu-card p {
+color: #786459;
+
+font-size: 14px;
+
+min-height: 68px;
+
+margin-bottom: 15px;
+
+}
+
+.sizes {
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+border-top: 1px solid #eadcc9;
+
+padding: 11px 0;
+
+}
+
+.sizes span {
+color: #786459;
+
+font-size: 14px;
+
+}
+
+.sizes strong {
+color: #a0643f;
+
+font-size: 15px;
+
+}
+
+/* ---------- Desserts ---------- */
+
+.dessert-section {
+padding: 90px 7vw;
+
+background-color: #fffaf3;
+
+}
+
+.dessert-grid {
+max-width: 1100px;
+
+margin: 0 auto;
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 28px;
+
+}
+
+.dessert-card {
+background-color: #f7f1e8;
+
+border-radius: 18px;
+
+padding: 18px;
+
+border: 1px solid #eadcc9;
+
+text-align: center;
+
+transition: 0.3s;
+
+}
+
+.dessert-card:hover {
+transform: translateY(-5px);
+}
+
+.dessert-card img {
+width: 100%;
+
+height: 210px;
+
+object-fit: cover;
+
+border-radius: 13px;
+
+margin-bottom: 18px;
+
+}
+
+.dessert-card h3 {
+font-family: Georgia, serif;
+
+font-size: 22px;
+
+margin-bottom: 8px;
+
+color: #4b3025;
+
+}
+
+.dessert-card p {
+color: #786459;
+
+font-size: 14px;
+
+margin-bottom: 10px;
+
+}
+
+.dessert-card strong {
+color: #a0643f;
+
+font-size: 16px;
+
+}
+
+/* ========================================
+CONTACT PAGE
+======================================== */
+
+.contact-section {
+padding: 90px 7vw;
+
+display: grid;
+
+grid-template-columns: 1fr 1fr;
+
+gap: 60px;
+
+max-width: 1200px;
+
+margin: 0 auto;
+
+}
+
+.contact-info {
+padding: 30px 0;
+}
+
+.contact-info h2 {
+font-family: Georgia, serif;
+
+font-size: 42px;
+
+color: #4b3025;
+
+margin-bottom: 20px;
+
+}
+
+.contact-info > p {
+color: #786459;
+
+max-width: 480px;
+
+margin-bottom: 35px;
+
+}
+
+.info-item {
+border-top: 1px solid #dfcdbb;
+
+padding: 20px 0;
+
+}
+
+.info-item h3 {
+font-size: 17px;
+
+color: #5a3825;
+
+margin-bottom: 5px;
+
+}
+
+.info-item p {
+color: #786459;
+
+font-size: 15px;
+
+}
+
+/* ---------- Contact Form ---------- */
+
+.contact-form-card {
+background-color: #fffaf3;
+
+padding: 40px;
+
+border-radius: 20px;
+
+border: 1px solid #eadcc9;
+
+box-shadow:
+    0 12px 35px rgba(74, 48, 37, 0.1);
+
+}
+
+.contact-form-card h2 {
+font-family: Georgia, serif;
+
+font-size: 32px;
+
+color: #4b3025;
+
+margin-bottom: 8px;
+
+}
+
+.contact-form-card > p {
+color: #786459;
+
+margin-bottom: 25px;
+
+}
+
+/* ---------- Forms ---------- */
+
+form {
+display: flex;
+
+flex-direction: column;
+
+gap: 9px;
+
+}
+
+label {
+font-size: 14px;
+
+font-weight: bold;
+
+color: #5a3825;
+
+margin-top: 8px;
+
+}
+
+input,
+select,
+textarea {
+width: 100%;
+
+padding: 13px 15px;
+
+border: 1px solid #d9c5b2;
+
+border-radius: 10px;
+
+background-color: #fff;
+
+color: #3b2920;
+
+font-family: Arial, sans-serif;
+
+font-size: 14px;
+
+outline: none;
+
+transition: 0.3s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+border-color: #a0643f;
+
+box-shadow:
+    0 0 0 3px rgba(160, 100, 63, 0.12);
+
+}
+
+/* Fixed curly quotation marks from original CSS */
+
+input[type="color"] {
+height: 50px;
+
+padding: 5px;
+
+cursor: pointer;
+
+}
+
+textarea {
+resize: vertical;
+
+min-height: 130px;
+
+}
+
+button {
+margin-top: 15px;
+
+padding: 14px 25px;
+
+border: none;
+
+border-radius: 30px;
+
+background-color: #5a3825;
+
+color: white;
+
+font-size: 15px;
+
+font-weight: bold;
+
+cursor: pointer;
+
+transition: 0.3s;
+
+}
+
+button:hover {
+background-color: #a0643f;
+
+transform: translateY(-2px);
+
+}
+
+/* ========================================
+FOOTER
+Supports both footer structures
+======================================== */
+
+.site-footer {
+background-color: #2f211c;
+
+color: #eadcc9;
+
+text-align: center;
+
+padding: 45px 20px;
+
+}
+
+.site-footer h3 {
+font-family: Georgia, serif;
+
+color: white;
+
+font-size: 25px;
+
+margin-bottom: 12px;
+
+}
+
+.site-footer p {
+font-size: 13px;
+
+margin: 5px 0;
+
+color: #cdb8a7;
+
+}
+
+/* Friend's footer structure */
+
+footer {
+background-color: #2f211c;
+
+color: #f8f3eb;
+
+text-align: center;
+
+padding: 1.5rem;
+
+}
+
+footer p {
+font-size: 0.9rem;
+}
+
+/* ========================================
+RESPONSIVE DESIGN
+======================================== */
+
+/* ---------- Tablet ---------- */
+
+@media (max-width: 900px) {
+
+.site-header {
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.menu-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.dessert-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.contact-section {
+    grid-template-columns: 1fr;
+
+    gap: 30px;
+}
+
+}
+
+/* ---------- 768px ---------- */
 
 @media (max-width: 768px) {
 
-    .about-hero h1 {
-        font-size: 2.5rem;
-    }
+nav {
+    flex-direction: column;
 
-    .value-cards {
-        flex-direction: column;
-        align-items: center;
-    }
+    gap: 1rem;
+}
 
-    .value-card {
-        width: 100%;
-        max-width: 450px;
-    }
+.nav-links {
+    gap: 1rem;
 
-    .team-member {
-        width: 100%;
-        max-width: 350px;
-    }
+    flex-wrap: wrap;
 
-    .story-content {
-        padding: 2rem;
-    }
+    justify-content: center;
+}
+
+.introduction {
+    flex-direction: column;
+}
+
+.intro-image,
+.intro-content {
+    width: 100%;
+}
+
+.features {
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.feature {
+    width: 100%;
+
+    max-width: 450px;
+}
+
+.intro-image img {
+    height: 300px;
+}
+
+.about-hero h1 {
+    font-size: 2.5rem;
+}
+
+.value-cards {
+    flex-direction: column;
+
+    align-items: center;
+}
+
+.value-card {
+    width: 100%;
+
+    max-width: 450px;
+}
+
+.team-member {
+    width: 100%;
+
+    max-width: 350px;
+}
+
+.story-content {
+    padding: 2rem;
+}
+
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 600px) {
+
+.nav-menu {
+    gap: 12px;
+
+    flex-wrap: wrap;
+
+    justify-content: center;
+}
+
+.menu-hero,
+.contact-hero {
+    min-height: 350px;
+}
+
+.menu-grid {
+    grid-template-columns: 1fr;
+}
+
+.dessert-grid {
+    grid-template-columns: 1fr;
+}
+
+.menu-section,
+.dessert-section,
+.price-section,
+.contact-section {
+    padding: 60px 20px;
+}
+
+.contact-form-card {
+    padding: 25px;
+}
+
+.section-heading h2,
+.contact-info h2 {
+    font-size: 34px;
+}
+
 }
