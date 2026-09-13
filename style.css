@@ -41,7 +41,7 @@ NAVIGATION
 Supports both existing HTML structures
 ======================================== */
 
-/* Friend's navigation structure */
+/* Aruzhan's navigation structure */
 
 header {
 background-color: #2f211c;
@@ -60,7 +60,7 @@ justify-content: space-between;
 
 }
 
-/* Your navigation structure */
+/* Ulzhan navigation structure */
 
 .site-header {
 width: 100%;
@@ -89,7 +89,7 @@ color: #f8f3eb;
 letter-spacing: 2px;
 }
 
-/* ---------- Friend's Navigation ---------- */
+/* ---------- Aruzhan's Navigation ---------- */
 
 .nav-links {
 display: flex;
@@ -114,7 +114,7 @@ font-weight: bold;
 border-bottom: 2px solid #d6b28a;
 }
 
-/* ---------- Your Navigation ---------- */
+/* ---------- Ulzhan Navigation ---------- */
 
 .nav-menu {
 display: flex;
@@ -188,7 +188,7 @@ background-image:
         rgba(45, 27, 20, 0.62),
         rgba(45, 27, 20, 0.62)
     ),
-    url("../images/coffee.jpg");
+    url("images/coffee.jpg");
 
 background-size: cover;
 background-position: center;
@@ -518,7 +518,7 @@ background-image:
         rgba(47, 33, 28, 0.65),
         rgba(47, 33, 28, 0.65)
     ),
-    url("../images/coffee-house.jpg");
+    url("images/coffee-house.jpg");
 
 background-size: cover;
 background-position: center;
@@ -1167,7 +1167,7 @@ color: #cdb8a7;
 
 }
 
-/* Friend's footer structure */
+/* Aruzhan's footer structure */
 
 footer {
 background-color: #2f211c;
