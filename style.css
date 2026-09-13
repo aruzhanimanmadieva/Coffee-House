@@ -151,7 +151,7 @@ background-image:
         rgba(35, 24, 19, 0.55),
         rgba(35, 24, 19, 0.55)
     ),
-    url("../images/coffee-house.jpg");
+    url("images/coffee-house.jpg");
 
 background-size: cover;
 background-position: center;
