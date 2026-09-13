@@ -184,10 +184,6 @@ padding: 60px 20px;
 background-color: #4b3025;
 
 background-image:
-    linear-gradient(
-        rgba(45, 27, 20, 0.62),
-        rgba(45, 27, 20, 0.62)
-    ),
     url("images/coffee.jpg");
 
 background-size: cover;
