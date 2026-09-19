@@ -188,7 +188,7 @@ background-image:
         rgba(45, 27, 20, 0.62),
         rgba(45, 27, 20, 0.62)
     ),
-    url("../images/coffee.jpg");
+    url("/images/coffee.jpg");
 
 background-size: cover;
 background-position: center;
