@@ -888,8 +888,62 @@
 
 </section>
 
+<!-- ASSIGNMENT 4.
+TASK 3: POPUP SUBSCRIPTION FORM -->
+<section class="coffee-club-section">
+    <h2>Join Our Coffee Club</h2>
+    <p>Good coffee, good moments, great company.</p>
 
+    <button type="button" class="main-button" id="openPopup">
+        Subscribe Now
+    </button>
+</section>
 
+<div class="popup-overlay" id="popupOverlay">
+    <div class="popup-content" role="dialog" aria-modal="true"
+         aria-labelledby="popupTitle">
+
+        <button type="button" class="popup-close" id="closePopup"
+                aria-label="Close popup">&times;</button>
+
+        <p class="section-label">SOLACE COFFEE HOUSE</p>
+        <h2 id="popupTitle">Stay Connected</h2>
+        <p>Subscribe to receive coffee news and special updates.</p>
+
+        <form id="subscriptionForm">
+            <label for="subscriberName">Your Name</label>
+            <input type="text" id="subscriberName"
+                   placeholder="Enter your name" required>
+
+            <label for="subscriberEmail">Email Address</label>
+            <input type="email" id="subscriberEmail"
+                   placeholder="example@email.com" required>
+
+            <button type="submit" class="main-button popup-submit">
+                Subscribe
+            </button>
+
+            <p id="subscriptionMessage" role="status"></p>
+        </form>
+    </div>
+</div>
+
+<!--ASSIGNMENT 4. TASK 5: CURRENT DATE AND TIME -->
+
+<section class="datetime-section">
+    <div class="datetime-card">
+        <p class="section-label">A MOMENT AT SOLACE</p>
+        <h2>Enjoy the Present Moment</h2>
+        <p class="datetime-description">
+            Every moment is better with a cup of coffee.
+        </p>
+
+        <div class="datetime-display">
+            <p id="currentDate">Loading date...</p>
+            <p id="currentTime">Loading time...</p>
+        </div>
+    </div>
+</section>
 <!-- ================= FOOTER ================= -->
 
 <footer class="footer">
@@ -931,14 +985,15 @@
 
 </footer>
 
-
-
 <!-- Bootstrap JavaScript -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
 </script>
 
+<!-- JavaScript -->
+
+<script src="script.js"></script>
 
 </body>
 
