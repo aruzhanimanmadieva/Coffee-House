@@ -1898,3 +1898,286 @@ fieldset legend {
     }
 
 }
+/* ========================================
+   TASK 1: FORM VALIDATION
+======================================== */
+.signup-section {
+    padding: 70px 20px;
+    background-color: #eee3d5;
+}
+
+.signup-container {
+    max-width: 550px;
+    margin: 0 auto;
+    padding: 35px;
+    background-color: #fffaf3;
+    border: 1px solid #eadcc9;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(59, 41, 32, 0.10);
+}
+
+.signup-container h2 {
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.signup-container .section-label,
+.signup-description {
+    text-align: center;
+}
+
+.signup-description {
+    margin-bottom: 25px;
+    color: #786459;
+}
+
+.signup-field {
+    margin-bottom: 20px;
+}
+
+.signup-field label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: bold;
+}
+
+.signup-field input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 1rem;
+    color: #3b2920;
+    background-color: white;
+    border: 1px solid #cbb8a5;
+    border-radius: 6px;
+}
+
+.signup-field input:focus {
+    outline: 2px solid #a8754e;
+}
+
+.signup-field input.invalid {
+    border-color: #c0392b;
+}
+
+.error-message {
+    display: block;
+    margin-top: 5px;
+    color: #c0392b;
+    font-size: 0.85rem;
+}
+
+.signup-button {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-message {
+    margin-top: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.form-message.success {
+    color: #287a43;
+}
+
+.form-message.error {
+    color: #c0392b;
+}
+
+@media (max-width: 576px) {
+    .signup-section {
+        padding: 40px 15px;
+    }
+
+    .signup-container {
+        padding: 25px 18px;
+    }
+}
+/* ASSIGNMENT 4.  TASK 3: POPUP SUBSCRIPTION FORM */
+
+.coffee-club-section {
+    padding: 55px 20px;
+    text-align: center;
+    background-color: #eee3d5;
+}
+
+.coffee-club-section h2 {
+    margin-bottom: 12px;
+}
+
+.coffee-club-section p {
+    margin-bottom: 22px;
+    color: #786459;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(30, 20, 15, 0.65);
+}
+
+.popup-overlay.active {
+    display: flex;
+}
+
+.popup-content {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 35px;
+    background-color: #fffaf3;
+    border-radius: 15px;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+    animation: popupAppear 0.25s ease;
+}
+
+.popup-content h2,
+.popup-content > p {
+    text-align: center;
+}
+
+.popup-content h2 {
+    margin-bottom: 12px;
+}
+
+.popup-content > p {
+    color: #786459;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #3b2920;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.popup-content label {
+    display: block;
+    margin: 15px 0 7px;
+    font-weight: bold;
+}
+
+.popup-content input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbb8a5;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.popup-content input:focus {
+    outline: 2px solid #a8754e;
+}
+
+.popup-submit {
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+#subscriptionMessage {
+    margin-top: 15px;
+    text-align: center;
+    color: #287a43;
+    font-weight: bold;
+}
+
+body.popup-open {
+    overflow: hidden;
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 576px) {
+    .popup-content {
+        padding: 30px 20px;
+    }
+}
+/* ASSIGNMENT 4. TASK 5: CURRENT DATE AND TIME */
+
+.datetime-section {
+    padding: 45px 20px;
+    background-color: #fffaf3;
+}
+
+.datetime-card {
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    text-align: center;
+    background-color: #eee3d5;
+    border: 1px solid #eadcc9;
+    border-radius: 15px;
+}
+
+.datetime-card h2 {
+    margin-bottom: 12px;
+}
+
+.datetime-description {
+    margin-bottom: 22px;
+    color: #786459;
+}
+
+.datetime-display {
+    padding: 18px;
+    background-color: #fffaf3;
+    border-radius: 10px;
+}
+
+#currentDate {
+    margin-bottom: 10px;
+    color: #786459;
+    font-size: 1rem;
+}
+
+#currentTime {
+    margin: 0;
+    color: #5b3928;
+    font-size: 2rem;
+    font-weight: bold;
+    font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 576px) {
+    .datetime-card {
+        padding: 25px 15px;
+    }
+
+    #currentTime {
+        font-size: 1.6rem;
+    }
+}
+
