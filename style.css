@@ -2180,4 +2180,108 @@ body.popup-open {
         font-size: 1.6rem;
     }
 }
+/* =====================================================
+   TASK 2 — FAQ ACCORDION
+   ===================================================== */
 
+.faq-section {
+    background: var(--cream);
+}
+
+.solace-accordion .accordion-item {
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    margin-bottom: 12px;
+}
+
+.solace-accordion .accordion-button {
+    background: var(--cream-light);
+    color: var(--brown);
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 20px;
+    box-shadow: none;
+}
+
+.solace-accordion .accordion-button:not(.collapsed) {
+    background: #e9e0d5;
+    color: var(--brown);
+}
+
+.solace-accordion .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(168, 117, 78, 0.2);
+}
+
+.solace-accordion .accordion-body {
+    background: var(--cream-light);
+    color: var(--brown-light);
+    font-size: 14px;
+    line-height: 1.8;
+    padding: 20px;
+}
+
+
+/* =====================================================
+   TASK 4 — BACKGROUND COLOR CHANGER
+   ===================================================== */
+
+.color-changer-section {
+    background: var(--cream);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    transition: background-color 0.3s ease;
+}
+
+.color-changer-section h2 {
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2.3rem, 4vw, 3.5rem);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.color-changer-section p:not(.small-title) {
+    color: var(--brown-light);
+    font-size: 14px;
+}
+
+.color-buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.mood-button {
+    padding: 10px 22px;
+    background: var(--cream-light);
+    color: var(--brown);
+    border: 1px solid var(--brown);
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 13px;
+    cursor: pointer;
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease;
+}
+
+.mood-button:hover,
+.mood-button:focus-visible,
+.mood-button[aria-pressed="true"] {
+    background: var(--brown);
+    color: #ffffff;
+}
+
+@media (max-width: 575px) {
+
+    .color-buttons {
+        gap: 8px;
+    }
+
+    .mood-button {
+        padding: 9px 16px;
+    }
+
+}
