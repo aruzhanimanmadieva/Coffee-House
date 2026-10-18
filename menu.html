@@ -5,56 +5,150 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <meta name="description"
+          content="Explore the Solace Coffee House menu with coffee and desserts.">
+
     <title>SOLACE - Menu</title>
 
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-    <nav>
-        <a href="index.html" class="logo">SOLACE</a>
+<!-- ================= NAVBAR ================= -->
 
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="menu.html" class="active">Menu</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
+<nav class="navbar navbar-expand-lg main-navbar">
+    <div class="container">
+
+        <a class="navbar-brand logo" href="index.html">
+            SOLACE<span>.</span>
+        </a>
+
+        <!-- Bootstrap hamburger -->
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navigation"
+            aria-controls="navigation"
+            aria-expanded="false"
+            aria-label="Open navigation">
+
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navigation">
+
+            <ul class="navbar-nav ms-auto align-items-lg-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="menu.html">
+                        Menu
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="about.html">
+                        About Us
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="contact.html">
+                        Contact
+                    </a>
+                </li>
+
+                <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                    <a class="nav-order" href="contact.html">
+                        Order Now
+                    </a>
+                </li>
+
+            </ul>
+
         </div>
-    </nav>
+    </div>
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<header class="menu-hero">
+    <div class="container py-5 py-lg-5">
+
+        <div class="row align-items-center g-4">
+
+            <div class="col-12 col-lg-8">
+                <div class="hero-content">
+
+                    <p class="small-title">
+                        SOLACE COFFEE HOUSE
+                    </p>
+
+                    <h1>
+                        Our <em>Menu</em>
+                    </h1>
+
+                    <p>
+                        Discover freshly brewed coffee, cozy treats
+                        and little moments of happiness.
+                    </p>
+
+                </div>
+            </div>
+
+            <div class="col-12 col-lg-4">
+                <div class="menu-hero-note">
+                    <span>MENU / 2026</span>
+                    <p>
+                        Carefully prepared coffee and desserts
+                        for every kind of moment.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 </header>
 
 
-<main>
+<!-- ================= COFFEE MENU ================= -->
 
-    <!-- Menu Hero -->
-    <section class="menu-hero">
+<section class="menu-section py-5 py-lg-5">
 
-        <div class="hero-content">
+    <div class="container">
 
-            <p class="small-title">SOLACE COFFEE HOUSE</p>
+        <div class="section-heading mb-5">
 
-            <h1>Our Menu</h1>
-
-            <p>
-                Discover freshly brewed coffee, cozy treats
-                and little moments of happiness.
+            <p class="small-title">
+                FRESHLY BREWED
             </p>
 
-        </div>
-
-    </section>
-
-
-    <!-- Coffee Section -->
-    <section class="menu-section">
-
-        <div class="section-heading">
-
-            <p class="small-title">FRESHLY BREWED</p>
-
-            <h2>Coffee</h2>
+            <h2>
+                Coffee
+            </h2>
 
             <p>
                 From classic espresso to creamy latte,
@@ -64,218 +158,424 @@
         </div>
 
 
-        <div class="menu-grid">
+        <!-- Bootstrap Grid: 12 columns -->
+        <div class="row g-4">
+
 
             <!-- Espresso -->
-            <article class="menu-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/espresso.jpg" alt="Espresso coffee">
+                <article class="card menu-card h-100">
 
-                <div class="menu-card-content">
+                    <img
+                        src="images/espresso.jpg"
+                        class="card-img-top menu-card-image"
+                        alt="Espresso coffee">
 
-                    <h3>Espresso</h3>
+                    <div class="card-body menu-card-content d-flex flex-column">
 
-                    <p>
-                        Rich and intense coffee with
-                        a smooth finish.
-                    </p>
+                        <h3 class="card-title">
+                            Espresso
+                        </h3>
 
-                    <div class="sizes">
-                        <span>Small</span>
-                        <strong>900 ₸</strong>
+                        <p class="card-text">
+                            Rich and intense coffee with
+                            a smooth finish.
+                        </p>
+
+                        <div class="sizes">
+                            <span>Small</span>
+                            <strong>900 ₸</strong>
+                        </div>
+
+                        <div class="sizes">
+                            <span>Medium</span>
+                            <strong>1100 ₸</strong>
+                        </div>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary solace-btn mt-3">
+
+                            Order now
+
+                        </a>
+
                     </div>
+                </article>
 
-                    <div class="sizes">
-                        <span>Medium</span>
-                        <strong>1100 ₸</strong>
-                    </div>
-
-                    <a href="contact.html" class="order-button">
-                        Order now
-                    </a>
-
-                </div>
-
-            </article>
+            </div>
 
 
             <!-- Americano -->
-            <article class="menu-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/americano.jpg" alt="Americano coffee">
+                <article class="card menu-card h-100">
 
-                <div class="menu-card-content">
+                    <img
+                        src="images/americano.jpg"
+                        class="card-img-top menu-card-image"
+                        alt="Americano coffee">
 
-                    <h3>Americano</h3>
+                    <div class="card-body menu-card-content d-flex flex-column">
 
-                    <p>
-                        Espresso with hot water for
-                        a smooth and balanced taste.
-                    </p>
+                        <h3 class="card-title">
+                            Americano
+                        </h3>
 
-                    <div class="sizes">
-                        <span>Small</span>
-                        <strong>1000 ₸</strong>
+                        <p class="card-text">
+                            Espresso with hot water for
+                            a smooth and balanced taste.
+                        </p>
+
+                        <div class="sizes">
+                            <span>Small</span>
+                            <strong>1000 ₸</strong>
+                        </div>
+
+                        <div class="sizes">
+                            <span>Medium</span>
+                            <strong>1200 ₸</strong>
+                        </div>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary solace-btn mt-3">
+
+                            Order now
+
+                        </a>
+
                     </div>
+                </article>
 
-                    <div class="sizes">
-                        <span>Medium</span>
-                        <strong>1200 ₸</strong>
-                    </div>
-
-                    <a href="contact.html" class="order-button">
-                        Order now
-                    </a>
-
-                </div>
-
-            </article>
+            </div>
 
 
             <!-- Cappuccino -->
-            <article class="menu-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/cappuccino.jpg" alt="Cappuccino coffee">
+                <article class="card menu-card h-100">
 
-                <div class="menu-card-content">
+                    <img
+                        src="images/cappuccino.jpg"
+                        class="card-img-top menu-card-image"
+                        alt="Cappuccino coffee">
 
-                    <h3>Cappuccino</h3>
+                    <div class="card-body menu-card-content d-flex flex-column">
 
-                    <p>
-                        Espresso with steamed milk
-                        and soft milk foam.
-                    </p>
+                        <h3 class="card-title">
+                            Cappuccino
+                        </h3>
 
-                    <div class="sizes">
-                        <span>Small</span>
-                        <strong>1200 ₸</strong>
+                        <p class="card-text">
+                            Espresso with steamed milk
+                            and soft milk foam.
+                        </p>
+
+                        <div class="sizes">
+                            <span>Small</span>
+                            <strong>1200 ₸</strong>
+                        </div>
+
+                        <div class="sizes">
+                            <span>Medium</span>
+                            <strong>1400 ₸</strong>
+                        </div>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary solace-btn mt-3">
+
+                            Order now
+
+                        </a>
+
                     </div>
+                </article>
 
-                    <div class="sizes">
-                        <span>Medium</span>
-                        <strong>1400 ₸</strong>
-                    </div>
-
-                    <a href="contact.html" class="order-button">
-                        Order now
-                    </a>
-
-                </div>
-
-            </article>
+            </div>
 
 
             <!-- Latte -->
-            <article class="menu-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/latte.jpg" alt="Latte coffee">
+                <article class="card menu-card h-100">
 
-                <div class="menu-card-content">
+                    <img
+                        src="images/latte.jpg"
+                        class="card-img-top menu-card-image"
+                        alt="Latte coffee">
 
-                    <h3>Latte</h3>
+                    <div class="card-body menu-card-content d-flex flex-column">
 
-                    <p>
-                        Smooth espresso with plenty
-                        of creamy steamed milk.
-                    </p>
+                        <h3 class="card-title">
+                            Latte
+                        </h3>
 
-                    <div class="sizes">
-                        <span>Small</span>
-                        <strong>1300 ₸</strong>
+                        <p class="card-text">
+                            Smooth espresso with plenty
+                            of creamy steamed milk.
+                        </p>
+
+                        <div class="sizes">
+                            <span>Small</span>
+                            <strong>1300 ₸</strong>
+                        </div>
+
+                        <div class="sizes">
+                            <span>Medium</span>
+                            <strong>1500 ₸</strong>
+                        </div>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary solace-btn mt-3">
+
+                            Order now
+
+                        </a>
+
                     </div>
+                </article>
 
-                    <div class="sizes">
-                        <span>Medium</span>
-                        <strong>1500 ₸</strong>
-                    </div>
-
-                    <a href="contact.html" class="order-button">
-                        Order now
-                    </a>
-
-                </div>
-
-            </article>
+            </div>
 
 
             <!-- Mocha -->
-            <article class="menu-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/mocha.jpg" alt="Mocha coffee">
+                <article class="card menu-card h-100">
 
-                <div class="menu-card-content">
+                    <img
+                        src="images/mocha.jpg"
+                        class="card-img-top menu-card-image"
+                        alt="Mocha coffee">
 
-                    <h3>Mocha</h3>
+                    <div class="card-body menu-card-content d-flex flex-column">
 
-                    <p>
-                        A sweet combination of espresso,
-                        chocolate and milk.
-                    </p>
+                        <h3 class="card-title">
+                            Mocha
+                        </h3>
 
-                    <div class="sizes">
-                        <span>Small</span>
-                        <strong>1500 ₸</strong>
+                        <p class="card-text">
+                            A sweet combination of espresso,
+                            chocolate and milk.
+                        </p>
+
+                        <div class="sizes">
+                            <span>Small</span>
+                            <strong>1500 ₸</strong>
+                        </div>
+
+                        <div class="sizes">
+                            <span>Medium</span>
+                            <strong>1700 ₸</strong>
+                        </div>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary solace-btn mt-3">
+
+                            Order now
+
+                        </a>
+
                     </div>
+                </article>
 
-                    <div class="sizes">
-                        <span>Medium</span>
-                        <strong>1700 ₸</strong>
-                    </div>
-
-                    <a href="contact.html" class="order-button">
-                        Order now
-                    </a>
-
-                </div>
-
-            </article>
+            </div>
 
 
             <!-- Cold Brew -->
-            <article class="menu-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/coffee.jpg" alt="Cold brew coffee">
+                <article class="card menu-card h-100">
 
-                <div class="menu-card-content">
+                    <img
+                        src="images/coffee.jpg"
+                        class="card-img-top menu-card-image"
+                        alt="Cold brew coffee">
 
-                    <h3>Cold Brew</h3>
+                    <div class="card-body menu-card-content d-flex flex-column">
 
-                    <p>
-                        Slowly brewed cold coffee
-                        with a refreshing taste.
-                    </p>
+                        <h3 class="card-title">
+                            Cold Brew
+                        </h3>
 
-                    <div class="sizes">
-                        <span>Small</span>
-                        <strong>1400 ₸</strong>
+                        <p class="card-text">
+                            Slowly brewed cold coffee
+                            with a refreshing taste.
+                        </p>
+
+                        <div class="sizes">
+                            <span>Small</span>
+                            <strong>1400 ₸</strong>
+                        </div>
+
+                        <div class="sizes">
+                            <span>Medium</span>
+                            <strong>1600 ₸</strong>
+                        </div>
+
+                        <a
+                            href="contact.html"
+                            class="btn btn-primary solace-btn mt-3">
+
+                            Order now
+
+                        </a>
+
                     </div>
+                </article>
 
-                    <div class="sizes">
-                        <span>Medium</span>
-                        <strong>1600 ₸</strong>
-                    </div>
-
-                    <a href="contact.html" class="order-button">
-                        Order now
-                    </a>
-
-                </div>
-
-            </article>
+            </div>
 
         </div>
 
-    </section>
+    </div>
+
+</section>
 
 
-    <!-- Desserts Section -->
-    <section class="dessert-section">
+<!-- ================= BUTTON GROUP ================= -->
 
-        <div class="section-heading">
+<section class="menu-actions py-5">
 
-            <p class="small-title">SOMETHING SWEET</p>
+    <div class="container text-center">
 
-            <h2>Desserts</h2>
+        <p class="small-title">
+            READY FOR COFFEE?
+        </p>
+
+        <h2 class="mb-4">
+            Choose your moment.
+        </h2>
+
+        <div
+            class="btn-group"
+            role="group"
+            aria-label="Menu actions">
+
+            <a
+                href="contact.html"
+                class="btn btn-primary">
+
+                Order Coffee
+
+            </a>
+
+            <a
+                href="#desserts"
+                class="btn btn-outline-secondary">
+
+                View Desserts
+
+            </a>
+
+            <a
+                href="#gallery"
+                class="btn btn-secondary">
+
+                Gallery
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= BACKGROUND COLOR CHANGER ================= -->
+
+<section class="color-changer-section py-5">
+
+    <div class="container text-center">
+
+        <p class="small-title">MAKE YOURSELF AT HOME</p>
+
+        <h2>Choose Your Mood</h2>
+
+        <p>
+            Choose a background color to match your mood.
+        </p>
+
+        <div class="color-buttons">
+
+            <button
+                type="button"
+                class="mood-button"
+                data-color="#faf8f4"
+                aria-pressed="false">
+
+                Cream
+
+            </button>
+
+            <button
+                type="button"
+                class="mood-button"
+                data-color="#f1e2d0"
+                aria-pressed="false">
+
+                Latte
+
+            </button>
+
+            <button
+                type="button"
+                class="mood-button"
+                data-color="#e4d5c5"
+                aria-pressed="false">
+
+                Mocha
+
+            </button>
+
+            <button
+                type="button"
+                class="mood-button"
+                data-color="#e5e9e2"
+                aria-pressed="false">
+
+                Sage
+
+            </button>
+
+            <button
+                type="button"
+                class="mood-button"
+                data-color="#f5f0e8"
+                aria-pressed="false">
+
+                Reset
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ================= DESSERTS ================= -->
+
+<section
+    id="desserts"
+    class="dessert-section py-5">
+
+    <div class="container">
+
+        <div class="section-heading mb-5">
+
+            <p class="small-title">
+                SOMETHING SWEET
+            </p>
+
+            <h2>
+                Desserts
+            </h2>
 
             <p>
                 Perfect companions for your favorite coffee.
@@ -284,250 +584,372 @@
         </div>
 
 
-        <div class="dessert-grid">
+        <div class="row g-4">
 
-            <!-- Chocolate Cake -->
-            <article class="dessert-card">
 
-                <img src="images/chocake.jpg" alt="Chocolate cake">
+            <!-- Cake -->
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <h3>Chocolate Cake</h3>
+                <article class="card dessert-card h-100">
 
-                <p>
-                    Rich chocolate cake with a soft texture.
-                </p>
+                    <img
+                        src="images/cake.jpg"
+                        class="card-img-top"
+                        alt="Chocolate cake">
 
-                <strong>1600 ₸</strong>
+                    <div class="card-body">
 
-            </article>
+                        <h3 class="card-title">
+                            Chocolate Cake
+                        </h3>
+
+                        <p class="card-text">
+                            Rich chocolate cake with a soft texture.
+                        </p>
+
+                        <strong>
+                            1600 ₸
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </div>
 
 
             <!-- Cheesecake -->
-            <article class="dessert-card">
+            <div class="col-12 col-md-6 col-lg-4">
 
-                <img src="images/cheesecake.jpg" alt="Cheesecake">
+                <article class="card dessert-card h-100">
 
-                <h3>Cheesecake</h3>
+                    <img
+                        src="images/cheesecake.jpg"
+                        class="card-img-top"
+                        alt="Cheesecake">
 
-                <p>
-                    Creamy cheesecake with a delicate taste.
+                    <div class="card-body">
+
+                        <h3 class="card-title">
+                            Cheesecake
+                        </h3>
+
+                        <p class="card-text">
+                            Creamy cheesecake with a delicate taste.
+                        </p>
+
+                        <strong>
+                            1700 ₸
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+
+            <!-- Cinnamon -->
+            <div class="col-12 col-md-6 col-lg-4">
+
+                <article class="card dessert-card h-100">
+
+                    <img
+                        src="images/cinnamon.jpg"
+                        class="card-img-top"
+                        alt="Cinnamon roll">
+
+                    <div class="card-body">
+
+                        <h3 class="card-title">
+                            Cinnamon Roll
+                        </h3>
+
+                        <p class="card-text">
+                            Soft pastry with cinnamon and sweet glaze.
+                        </p>
+
+                        <strong>
+                            1100 ₸
+                        </strong>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= CAROUSEL ================= -->
+
+<section
+    id="gallery"
+    class="gallery-section py-5 py-lg-5">
+
+    <div class="container">
+
+        <div class="gallery-header mb-4">
+
+            <div>
+
+                <p class="small-label">
+                    A GLIMPSE OF SOLACE
                 </p>
 
-                <strong>1700 ₸</strong>
+                <h2>
+                    Coffee <em>Gallery</em>
+                </h2>
 
-            </article>
+            </div>
+
+            <div class="gallery-counter">
+                01 — 09
+            </div>
+
+        </div>
 
 
-            <!-- Cinnamon Roll -->
-            <article class="dessert-card">
+        <!-- Bootstrap Carousel -->
+        <div
+            id="menuCarousel"
+            class="carousel slide"
+            data-bs-ride="carousel">
 
-                <img src="images/cinnamon.jpg" alt="Cinnamon roll">
+            <!-- Indicators -->
+            <div class="carousel-indicators">
 
-                <h3>Cinnamon Roll</h3>
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="0"
+                    class="active"
+                    aria-current="true"
+                    aria-label="Slide 1">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="1"
+                    aria-label="Slide 2">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="2"
+                    aria-label="Slide 3">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="3"
+                    aria-label="Slide 4">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="4"
+                    aria-label="Slide 5">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="5"
+                    aria-label="Slide 6">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="6"
+                    aria-label="Slide 7">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="7"
+                    aria-label="Slide 8">
+                </button>
+
+                <button
+                    type="button"
+                    data-bs-target="#menuCarousel"
+                    data-bs-slide-to="8"
+                    aria-label="Slide 9">
+                </button>
+
+            </div>
+
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+
+                <div class="carousel-item active">
+                    <img
+                        src="images/espresso.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Espresso coffee">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/americano.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Americano coffee">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/cappuccino.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Cappuccino coffee">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/latte.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Latte coffee">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/mocha.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Mocha coffee">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/coffee.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Cold brew coffee">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/cake.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Chocolate cake">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/cheesecake.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Cheesecake">
+                </div>
+
+                <div class="carousel-item">
+                    <img
+                        src="images/cinnamon.jpg"
+                        class="d-block w-100 gallery-image"
+                        alt="Cinnamon roll">
+                </div>
+
+            </div>
+
+
+            <!-- Previous -->
+            <button
+                class="carousel-control-prev"
+                type="button"
+                data-bs-target="#menuCarousel"
+                data-bs-slide="prev">
+
+                <span class="carousel-control-prev-icon"
+                      aria-hidden="true">
+                </span>
+
+                <span class="visually-hidden">
+                    Previous
+                </span>
+
+            </button>
+
+
+            <!-- Next -->
+            <button
+                class="carousel-control-next"
+                type="button"
+                data-bs-target="#menuCarousel"
+                data-bs-slide="next">
+
+                <span class="carousel-control-next-icon"
+                      aria-hidden="true">
+                </span>
+
+                <span class="visually-hidden">
+                    Next
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer class="footer">
+
+    <div class="container">
+
+        <div class="row g-4 align-items-center">
+
+            <div class="col-12 col-md-6">
+
+                <div class="footer-logo">
+                    SOLACE<span>.</span>
+                </div>
 
                 <p>
-                    Soft pastry with cinnamon and sweet glaze.
+                    Coffee • Comfort • Connection
                 </p>
 
-                <strong>1100 ₸</strong>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- Price Overview -->
-    <section class="price-section">
-
-        <div class="section-heading">
-
-            <p class="small-title">QUICK OVERVIEW</p>
-
-            <h2>Price List</h2>
-
-            <p>
-                A quick overview of our coffee and dessert prices.
-            </p>
-
-        </div>
-
-
-        <div class="table-container">
-
-            <table>
-
-                <thead>
-                    <tr>
-                        <th>Item</th>
-                        <th>Category</th>
-                        <th>Small</th>
-                        <th>Medium</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Espresso</td>
-                        <td>Coffee</td>
-                        <td>900 ₸</td>
-                        <td>1100 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Americano</td>
-                        <td>Coffee</td>
-                        <td>1000 ₸</td>
-                        <td>1200 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Cappuccino</td>
-                        <td>Coffee</td>
-                        <td>1200 ₸</td>
-                        <td>1400 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Latte</td>
-                        <td>Coffee</td>
-                        <td>1300 ₸</td>
-                        <td>1500 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Mocha</td>
-                        <td>Coffee</td>
-                        <td>1500 ₸</td>
-                        <td>1700 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Cold Brew</td>
-                        <td>Coffee</td>
-                        <td>1400 ₸</td>
-                        <td>1600 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Chocolate Cake</td>
-                        <td>Dessert</td>
-                        <td colspan="2">1600 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Cheesecake</td>
-                        <td>Dessert</td>
-                        <td colspan="2">1700 ₸</td>
-                    </tr>
-
-                    <tr>
-                        <td>Cinnamon Roll</td>
-                        <td>Dessert</td>
-                        <td colspan="2">1100 ₸</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-
-    </section>
-
-
-    <!-- Gallery Section -->
-    <section class="gallery-section">
-
-        <div class="section-heading">
-
-            <p class="small-title">A GLIMPSE OF SOLACE</p>
-
-            <h2>Coffee Gallery</h2>
-
-            <p>
-                Take a look at some of our favorite coffee moments.
-            </p>
-
-        </div>
-
-
-        <div class="gallery">
-
-            <div class="gallery-item">
-                <img src="images/espresso.jpg" alt="Espresso">
-                <div class="gallery-caption">Espresso</div>
             </div>
 
-            <div class="gallery-item">
-                <img src="images/americano.jpg" alt="Americano">
-                <div class="gallery-caption">Americano</div>
-            </div>
+            <div class="col-12 col-md-6 footer-right">
 
-            <div class="gallery-item">
-                <img src="images/cappuccino.jpg" alt="Cappuccino">
-                <div class="gallery-caption">Cappuccino</div>
-            </div>
+                <p>
+                    Team members:
+                    Aruzhan Imanmadiyeva,
+                    Ulzhan Askar
+                </p>
 
-            <div class="gallery-item">
-                <img src="images/latte.jpg" alt="Latte">
-                <div class="gallery-caption">Latte</div>
-            </div>
+                <p>
+                    ©️ 2026 Solace Coffee House
+                </p>
 
-            <div class="gallery-item">
-                <img src="images/mocha.jpg" alt="Mocha">
-                <div class="gallery-caption">Mocha</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="images/coffee.jpg" alt="Cold Brew">
-                <div class="gallery-caption">Cold Brew</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="images/chocake.jpg" alt="Chocolate Cake">
-                <div class="gallery-caption">Chocolate Cake</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="images/cheesecake.jpg" alt="Cheesecake">
-                <div class="gallery-caption">Cheesecake</div>
-            </div>
-
-            <div class="gallery-item">
-                <img src="images/cinnamon.jpg" alt="Cinnamon Roll">
-                <div class="gallery-caption">Cinnamon Roll</div>
             </div>
 
         </div>
 
-    </section>
-
-</main>
-
-
-<!-- Footer -->
-<footer class="site-footer">
-
-    <h3>SOLACE</h3>
-
-    <p>
-        Team members: Ulzhan Askar, Aruzhan Imanmadiyeva
-    </p>
-
-    <p>
-        © 2026 SOLACE. All rights reserved.
-    </p>
+    </div>
 
 </footer>
 
 
+<!-- Bootstrap JavaScript -->
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<script src="script.js"><</script>
+
 </body>
 </html>
-
-
-This version fixes the main HTML error in your original code: the gallery is now outside the price section, every section is properly closed, and the price table is included.
-
-If your style.css already contains styles for .table-container, table, th, and td, they will work directly; otherwise, the table may appear with default browser styling.
