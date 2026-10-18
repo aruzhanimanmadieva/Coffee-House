@@ -186,6 +186,36 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+/* TASK 2 — FAQ ACCORDION */
+
+document.addEventListener(“DOMContentLoaded”, function () {
+const accordionButtons = document.querySelectorAll(”.accordion-button”);
+
+accordionButtons.forEach(function (button) {
+    const answer = button.nextElementSibling;
+    if (!answer) {
+        return;
+    }
+    answer.style.overflow = "hidden";
+    answer.style.transition = "max-height 0.3s ease";
+    answer.style.maxHeight = "0";
+    answer.style.display = "block";
+    button.setAttribute("aria-expanded", "false");
+    button.addEventListener("click", function (event) {
+        event.preventDefault();
+        const isOpen = button.getAttribute("aria-expanded") === "true";
+        if (isOpen) {
+            answer.style.maxHeight = "0";
+            button.setAttribute("aria-expanded", "false");
+        } else {
+            answer.style.maxHeight = answer.scrollHeight + "px";
+            button.setAttribute("aria-expanded", "true");
+        }
+    });
+});
+
+});
+
 // ==========================================
 // TASK 4: CHANGE BACKGROUND COLOR
 // Used on menu.html
