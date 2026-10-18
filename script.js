@@ -186,3 +186,28 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+// ==========================================
+// TASK 4: CHANGE BACKGROUND COLOR
+// Used on menu.html
+// ==========================================
+const moodButtons = document.querySelectorAll(".mood-button");
+moodButtons.forEach(function (button) {
+    button.addEventListener("click", function () {
+        const selectedColor = button.dataset.color;
+        if (!selectedColor) {
+            return;
+        }
+        document.documentElement.style.setProperty(
+            "--cream-light",
+            selectedColor
+        );
+        document.documentElement.style.setProperty(
+            "--cream",
+            selectedColor
+        );
+        moodButtons.forEach(function (item) {
+            item.setAttribute("aria-pressed", "false");
+        });
+        button.setAttribute("aria-pressed", "true");
+    });
+});
