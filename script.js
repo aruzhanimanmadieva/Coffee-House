@@ -3,9 +3,9 @@
 // TASK 1: FORM VALIDATION
 // ==========================================
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener(”DOMContentLoaded”, function () {
 
-    const form = document.getElementById("signupForm");
+    const form = document.getElementById(”signupForm”);
 
     if (form) {
         form.addEventListener("submit", function (event) {
