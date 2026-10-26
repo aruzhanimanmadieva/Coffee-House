@@ -4,6 +4,7 @@
    Media Queries + Bootstrap Grid
    ========================================================= */
 
+
 /* =========================================================
    VARIABLES
    ========================================================= */
@@ -2183,44 +2184,105 @@ body.popup-open {
    TASK 2 — FAQ ACCORDION
    ===================================================== */
 
-.faq-section {
-    background: var(--cream);
+.solace-faq {
+padding: 60px 20px;
+background: #fffaf3;
+color: #3b2920;
 }
 
-.solace-accordion .accordion-item {
-    background: var(--cream-light);
-    border: 1px solid var(--line);
-    border-radius: 0;
-    margin-bottom: 12px;
+.solace-faq__container {
+max-width: 800px;
+margin: 0 auto;
 }
 
-.solace-accordion .accordion-button {
-    background: var(--cream-light);
-    color: var(--brown);
-    font-family: "DM Sans", Arial, sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 20px;
-    box-shadow: none;
+.solace-faq__label {
+text-align: center;
+letter-spacing: 2px;
+font-size: 0.85rem;
 }
 
-.solace-accordion .accordion-button:not(.collapsed) {
-    background: #e9e0d5;
-    color: var(--brown);
+.solace-faq__container h2 {
+text-align: center;
+margin: 12px 0;
 }
 
-.solace-accordion .accordion-button:focus {
-    box-shadow: 0 0 0 3px rgba(168, 117, 78, 0.2);
+.solace-faq__description {
+text-align: center;
+color: #786459;
+margin-bottom: 30px;
 }
 
-.solace-accordion .accordion-body {
-    background: var(--cream-light);
-    color: var(--brown-light);
-    font-size: 14px;
-    line-height: 1.8;
-    padding: 20px;
+.solace-faq__item {
+margin-bottom: 12px;
+border: 1px solid #eadcc9;
+border-radius: 8px;
+overflow: hidden;
+background: #fff;
 }
 
+.solace-faq__question {
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
+width: 100%;
+padding: 18px 20px;
+border: none;
+background: #eee3d5;
+color: #3b2920;
+font: inherit;
+font-weight: 600;
+text-align: left;
+cursor: pointer;
+}
+
+.solace-faq__question:hover {
+background: #e6d5c2;
+}
+
+.solace-faq__question:focus-visible {
+outline: 2px solid #a8754e;
+outline-offset: -3px;
+}
+
+.solace-faq__icon {
+font-size: 1.4rem;
+flex-shrink: 0;
+transition: transform 0.3s ease;
+}
+
+.solace-faq__question[aria-expanded="true"] .solace-faq__icon {
+transform: rotate(45deg);
+}
+
+.solace-faq__answer {
+display: grid;
+grid-template-rows: 1fr;
+transition: grid-template-rows 0.3s ease;
+}
+
+.solace-faq__answer[hidden] {
+display: none;
+}
+
+.solace-faq__answer p {
+min-height: 0;
+margin: 0;
+padding: 18px 20px;
+color: #786459;
+line-height: 1.7;
+}
+
+@media (max-width: 576px) {
+.solace-faq {
+padding: 40px 15px;
+}
+
+.solace-faq__question {
+    padding: 15px;
+}
+
+}
 
 /* =====================================================
    TASK 4 — BACKGROUND COLOR CHANGER
@@ -2285,82 +2347,407 @@ body.popup-open {
 
 }
 
-/* =====================================
-   ASSIGNMENT 5: RATING
-===================================== */
+/* =====================================================
+   ASSIGNMENT 5 — INTERACTIVE MENU FILTER + ORDER
+   ===================================================== */
+.menu-filter-section {
+    background: var(--cream-light, #fffaf3);
+    border-top: 1px solid var(--line, #eadcc9);
+    border-bottom: 1px solid var(--line, #eadcc9);
+}
+.menu-filter-heading { text-align: center; max-width: 650px; margin: 0 auto 22px; }
+.menu-filter-heading h2 { font-family: "Playfair Display", Georgia, serif; color: var(--brown, #3b2920); }
+.menu-filter-heading h2 em { color: var(--brown-light, #8b5e3c); }
+.menu-filter-heading p:not(.small-title) { color: var(--brown-light, #786459); }
+.menu-filter-controls { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.menu-filter-button, .clear-order-button {
+    border: 1px solid var(--brown, #6d4934); background: transparent; color: var(--brown, #3b2920);
+    padding: 10px 20px; border-radius: 999px; font: inherit; cursor: pointer;
+    transition: background-color .2s ease, color .2s ease, transform .2s ease;
+}
+.menu-filter-button:hover, .menu-filter-button:focus-visible, .menu-filter-button.is-active {
+    background: var(--brown, #6d4934); color: #fff; transform: translateY(-1px);
+}
+.order-summary { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 14px; margin-top: 22px; color: var(--brown, #3b2920); }
+.order-message { color: var(--brown-light, #786459); font-size: .92rem; }
+.clear-order-button { padding: 6px 13px; font-size: .88rem; }
+.clear-order-button:hover { background: #eadcc9; }
+.menu-card, .dessert-card, .tea-card { transition: transform .28s ease, box-shadow .28s ease, opacity .25s ease; }
+.menu-card:hover, .dessert-card:hover, .tea-card:hover { transform: translateY(-5px) scale(1.015); box-shadow: 0 14px 30px rgba(59, 41, 32, .12); }
+.menu-card, .dessert-card { animation: solaceCardIn .42s ease both; }
+@keyframes solaceCardIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.tea-card { height: 100%; border: 1px solid var(--line, #eadcc9); border-radius: 12px; overflow: hidden; background: #fff; }
+.tea-card-art { min-height: 150px; display: grid; place-items: center; background: linear-gradient(135deg, #f4e9d9, #e3d2b8); font-size: 4rem; }
+.tea-card .card-body { padding: 1.4rem; display: flex; flex-direction: column; }
+.tea-card .card-title { font-family: "Playfair Display", Georgia, serif; color: var(--brown, #3b2920); }
+.tea-card .tea-price { margin-top: auto; padding-top: 1rem; font-weight: 600; color: var(--brown, #3b2920); }
+.tea-card .solace-btn { margin-top: 1rem; }
+.menu-filter-section button:focus-visible, .form-step button:focus-visible { outline: 3px solid #bd936f; outline-offset: 3px; }
 
-.rating-section,
-.greeting-section {
-    padding: 70px 20px;
-    text-align: center;
+/* =====================================================
+   ASSIGNMENT 5 — THREE-STEP CONTACT FORM
+   ===================================================== */
+.form-progress { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 12px; }
+.form-progress-step { text-align: center; padding: 9px 5px; border-radius: 7px; background: #f2e9df; color: #786459; font-size: .82rem; }
+.form-progress-step.is-current { background: #6d4934; color: #fff; }
+.contact-step-status { color: #786459; font-size: .92rem; margin-bottom: 20px; }
+.form-step[hidden] { display: none !important; }
+.form-step.is-visible { animation: solaceStepIn .25s ease both; }
+.form-step-actions { display: flex; justify-content: space-between; align-items: center; gap: 12px; margin-top: 24px; }
+.form-step-actions .btn { min-width: 115px; }
+.contact-form-message { margin: 16px 0 0; font-weight: 600; }
+.contact-form-message.success { color: #2f6b45; }
+.contact-form-message.error { color: #a33131; }
+@keyframes solaceStepIn { from { opacity: 0; transform: translateX(8px); } to { opacity: 1; transform: translateX(0); } }
+@media (max-width: 480px) {
+    .form-progress { gap: 4px; }
+    .form-progress-step { font-size: .72rem; }
+    .form-step-actions { align-items: stretch; }
+    .form-step-actions .btn { min-width: 0; padding-left: 12px; padding-right: 12px; }
 }
 
+
+/* Assignment 5 polish: consistent card actions and mood colors across the menu/gallery */
+#coffee-menu, #tea-menu, #desserts, #gallery, .menu-hero, .menu-filter-section, .color-changer-section {
+    background-color: var(--menu-mood-bg, var(--cream-light, #fffaf3));
+    transition: background-color .3s ease;
+}
+#coffee-menu, #tea-menu, #desserts, #gallery { scroll-margin-top: 86px; }
+.menu-card-content, .dessert-card .card-body, .tea-card .card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.menu-card-content .card-text, .dessert-card .card-text, .tea-card .card-text {
+    min-height: 3.5em;
+}
+.menu-card-content .solace-btn, .dessert-card .solace-btn, .tea-card .solace-btn {
+    margin-top: auto !important;
+    align-self: flex-start;
+}
+.menu-card-content .sizes:last-of-type { margin-bottom: 1rem; }
+.menu-card[hidden], .dessert-card[hidden], .tea-product-item[hidden], [data-menu-section][hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+    .menu-card, .dessert-card, .tea-card, #coffee-menu, #tea-menu, #desserts, #gallery { animation: none !important; transition: none !important; }
+}
+
+/* =====================================================
+   FINAL VISUAL POLISH — Assignment 5
+   Stronger hover feedback and aligned menu-card actions
+   ===================================================== */
+.menu-card,
+.dessert-card,
+.tea-card {
+    height: 100%;
+    border-radius: 14px;
+    overflow: hidden;
+    transform-origin: center center;
+    transition: transform .32s cubic-bezier(.2,.75,.25,1),
+                box-shadow .32s ease,
+                border-color .32s ease;
+    will-change: transform;
+}
+
+/* Keep the lifted card above its neighbours while hovering. */
+#coffee-menu .col-12:has(.menu-card:hover),
+#desserts .col-12:has(.dessert-card:hover),
+#tea-menu .col-12:has(.tea-card:hover) {
+    position: relative;
+    z-index: 3;
+}
+
+.menu-card:hover,
+.dessert-card:hover,
+.tea-card:hover {
+    transform: translateY(-8px) scale(1.035);
+    box-shadow: 0 20px 42px rgba(59, 41, 32, .22),
+                0 5px 14px rgba(59, 41, 32, .10);
+    border-color: rgba(139, 94, 60, .45);
+}
+
+.menu-card .menu-card-image,
+.dessert-card .card-img-top {
+    transition: transform .4s ease, filter .4s ease;
+}
+
+.menu-card:hover .menu-card-image,
+.dessert-card:hover .card-img-top {
+    transform: scale(1.045);
+    filter: saturate(1.06);
+}
+
+/* Make all menu actions easy to find and align them along the card bottoms. */
+.menu-card-content,
+.dessert-card .card-body,
+.tea-card .card-body {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+}
+
+.menu-card-content .solace-btn,
+.dessert-card .solace-btn,
+.tea-card .solace-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    align-self: stretch;
+    width: 100%;
+    min-height: 46px;
+    margin-top: auto !important;
+    padding: 11px 16px;
+    white-space: nowrap;
+}
+
+.menu-card-content .sizes:last-of-type {
+    margin-bottom: 1rem;
+}
+
+.tea-card .tea-card-art {
+    flex-shrink: 0;
+}
+
+/* FAQ: a consistent outer card, with a slightly inset answer panel. */
+.solace-faq__item {
+    border: 1px solid #eadcc9;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 4px 14px rgba(59, 41, 32, .045);
+    transition: box-shadow .25s ease, border-color .25s ease;
+}
+
+.solace-faq__item:has(.solace-faq__question[aria-expanded="true"]) {
+    border-color: #d8bea4;
+    box-shadow: 0 8px 22px rgba(59, 41, 32, .08);
+}
+
+.solace-faq__question {
+    min-height: 66px;
+    padding: 18px 22px;
+    border-radius: 0;
+    line-height: 1.45;
+}
+
+.solace-faq__answer {
+    margin: 0 12px 12px;
+    border: 1px solid #f0e5d8;
+    border-radius: 9px;
+    background: #fffaf4;
+}
+
+.solace-faq__answer p {
+    padding: 15px 18px;
+    line-height: 1.7;
+}
+
+@media (hover: none) {
+    .menu-card:hover,
+    .dessert-card:hover,
+    .tea-card:hover {
+        transform: none;
+        box-shadow: none;
+    }
+    .menu-card:hover .menu-card-image,
+    .dessert-card:hover .card-img-top {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .menu-card,
+    .dessert-card,
+    .tea-card,
+    .menu-card .menu-card-image,
+    .dessert-card .card-img-top,
+    .solace-faq__item {
+        transition: none !important;
+    }
+}
+
+
+/* FINAL FIX: tea photo cards, guaranteed visible order buttons, and a single FAQ box */
+.tea-card { display: flex !important; flex-direction: column; height: 100%; min-height: 450px; }
+.tea-card-image { display: block; width: 100%; height: 210px; object-fit: cover; flex: 0 0 210px; }
+.tea-card .tea-card-art[hidden] { display: none !important; }
+.tea-card .tea-card-art:not([hidden]) { min-height: 210px; }
+.tea-card .card-body { display: flex !important; flex: 1 1 auto; flex-direction: column; padding: 1.35rem; }
+.tea-card .tea-price { margin-top: auto; padding-top: 1rem; }
+.tea-card button.tea-order-button,
+.tea-card .card-body button[data-add-to-order] {
+    display: flex !important; visibility: visible !important; opacity: 1 !important;
+    position: static !important; width: 100% !important; min-height: 48px !important;
+    align-items: center !important; justify-content: center !important;
+    margin: 1rem 0 0 !important; padding: 12px 16px !important;
+    color: #fff !important; background: #3b2920 !important;
+    border: 1px solid #3b2920 !important; border-radius: 4px !important;
+    font-size: 14px !important; font-weight: 600 !important; line-height: 1.3 !important;
+    cursor: pointer !important; z-index: 1;
+}
+.tea-card button.tea-order-button:hover,
+.tea-card .card-body button[data-add-to-order]:hover { background: #8b5e3c !important; border-color: #8b5e3c !important; }
+
+/* FAQ answer belongs to the same outer card: no second nested box. */
+.solace-faq__item { padding: 0 !important; }
+.solace-faq__answer { margin: 0 !important; padding: 0 22px 18px !important; border: 0 !important; border-radius: 0 !important; background: #fff !important; box-shadow: none !important; }
+.solace-faq__answer p { margin: 0 !important; padding: 12px 0 0 !important; border-top: 1px solid #f0e5d8; line-height: 1.65; }
+.solace-faq__question { width: 100%; }
+
+
+/* SOLACE — Assignment 5 additions: filters, orders, forms and accessibility */
+[data-menu-section][hidden],
+.tea-product-item[hidden],
+.menu-card[hidden],
+.dessert-card[hidden] { display: none !important; }
+
+#teaProducts {
+    display: flex;
+    flex-wrap: wrap;
+}
+.tea-product-item { overflow: hidden; border-radius: 12px; }
+.tea-product-item img { display: block; width: 100%; height: 220px; object-fit: cover; }
+.tea-product-item button, [data-add-to-order], #clearOrder,
+[data-next-step], [data-previous-step] {
+    cursor: pointer;
+    transition: opacity .2s ease, transform .2s ease;
+}
+.tea-product-item button:hover, [data-add-to-order]:hover, #clearOrder:hover {
+    opacity: .82;
+    transform: translateY(-1px);
+}
+#orderMessage, #contactFormMessage, #contactStepStatus { margin-top: 12px; }
+#orderCount { font-weight: 700; }
+#contactForm .is-invalid { border: 1px solid #b83232 !important; outline-color: #b83232; }
+#contactForm .form-step[hidden] { display: none !important; }
+.contact-form-message.error, .form-message.error { color: #b83232; }
+.contact-form-message.success, .form-message.success { color: #287447; }
+.rating-star { cursor: pointer; border: none; background: transparent; transition: transform .2s ease; }
+.rating-star:hover { transform: scale(1.15); }
+.rating-star.selected { color: #c58a36; }
+#popupOverlay { display: none; }
+#popupOverlay.active { display: flex; }
+body.popup-open { overflow: hidden; }
+button:focus-visible, a:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible {
+    outline: 2px solid #a8754e;
+    outline-offset: 3px;
+}
+@media (max-width: 600px) {
+    .tea-product-item img { height: 200px; }
+}
+
+
+/* ===== SOLACE integration fixes: rating, compact date/time, dynamic greeting ===== */
+.rating-section {
+    padding: 26px 20px 22px;
+    background: #fffaf3;
+}
 .rating-card {
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
-    padding: 35px 20px;
+    padding: 24px 24px 20px;
+    text-align: center;
+    background: #eee3d5;
+    border: 1px solid #eadcc9;
     border-radius: 16px;
-    background-color: var(--cream-light, #f8f3eb);
 }
-
+.rating-card h2 {
+    margin: 0 0 8px;
+    font-family: "Playfair Display", Georgia, serif;
+    color: #3b2920;
+}
+.rating-card > p:not(.small-label) {
+    margin-bottom: 12px;
+    color: #786459;
+}
 .rating-stars {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin: 20px 0;
+    gap: 8px;
+    margin: 8px 0 10px;
 }
-
 .rating-star {
-    padding: 5px;
-    border: none;
-    background: transparent;
-    color: #c8c0b5;
-    font-size: 38px;
-    cursor: pointer;
-    transition: color 0.2s ease, transform 0.2s ease;
+    padding: 0 3px;
+    color: #b7a18c;
+    font-size: clamp(2rem, 5vw, 2.6rem);
+    line-height: 1.2;
 }
-
+.rating-star.selected,
 .rating-star:hover {
-    transform: scale(1.15);
+    color: #c58a36;
+}
+#ratingMessage {
+    min-height: 1.5em;
+    margin: 0;
+    color: #5b3928;
+    font-size: .95rem;
 }
 
-.rating-star.selected {
-    color: #c58b35;
-    animation: starPop 0.25s ease;
+/* Compact card placed immediately above the Coffee Club subscribe section. */
+.datetime-section {
+    padding: 18px 20px 22px;
+    background: #fffaf3;
 }
-
-@keyframes starPop {
-    0% {
-        transform: scale(0.8);
-    }
-
-    70% {
-        transform: scale(1.2);
-    }
-
-    100% {
-        transform: scale(1);
-    }
+.datetime-card {
+    max-width: 600px;
+    padding: 17px 22px;
+    border-radius: 14px;
 }
-
-
-/* =====================================
-   ASSIGNMENT 5: GREETING
-===================================== */
+.datetime-card .section-label {
+    margin-bottom: 5px;
+}
+.datetime-card h2 {
+    margin: 0 0 5px;
+    font-size: clamp(1.25rem, 3vw, 1.65rem);
+}
+.datetime-description {
+    margin-bottom: 12px;
+    font-size: .9rem;
+}
+.datetime-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    padding: 10px 14px;
+}
+#currentDate {
+    margin: 0;
+    font-size: .9rem;
+}
+#currentTime {
+    font-size: 1.35rem;
+}
 
 .greeting-section {
-    background-color: var(--cream-light, #f8f3eb);
+    padding: 58px 20px;
+    text-align: center;
+    background: #eee3d5;
+    border-top: 1px solid #eadcc9;
+    border-bottom: 1px solid #eadcc9;
 }
-
+.greeting-section .container {
+    max-width: 760px;
+}
+.greeting-section h2 {
+    margin: 0 0 12px;
+    color: #3b2920;
+    font-family: "Playfair Display", Georgia, serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+.greeting-section .container > p:not(.about-kicker) {
+    color: #786459;
+}
 .greeting-form {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
     gap: 10px;
-    margin: 20px auto;
+    max-width: 560px;
+    margin: 22px auto 14px;
 }
-
 .greeting-form label {
     position: absolute;
     width: 1px;
@@ -2372,150 +2759,43 @@ body.popup-open {
     white-space: nowrap;
     border: 0;
 }
-
 .greeting-form input {
-    max-width: 280px;
-    padding: 12px;
-    border: 1px solid #c8b9a5;
+    flex: 1 1 220px;
+    min-width: 0;
+    padding: 12px 14px;
+    color: #3b2920;
+    background: #fffaf3;
+    border: 1px solid #cbb8a5;
     border-radius: 6px;
+    font: inherit;
 }
-
-.greeting-form button {
+#greetingButton {
     padding: 12px 20px;
-    border: none;
+    color: #fffaf3;
+    background: #5b3928;
+    border: 1px solid #5b3928;
     border-radius: 6px;
-    background-color: #6f4e37;
-    color: white;
+    font: inherit;
     cursor: pointer;
-    transition: background-color 0.2s ease;
+    transition: background .2s ease, transform .2s ease;
 }
-
-.greeting-form button:hover {
-    background-color: #513725;
+#greetingButton:hover {
+    background: #7a523b;
+    transform: translateY(-1px);
 }
-
-#ratingMessage,
 #greetingMessage {
-    margin-top: 15px;
+    min-height: 1.5em;
+    margin: 10px 0 0;
+    color: #5b3928;
+    font-weight: 500;
 }
-
 @media (max-width: 576px) {
-    .rating-section,
-    .greeting-section {
-        padding: 45px 15px;
-    }
-
-    .rating-star {
-        font-size: 32px;
-    }
-
-    .greeting-form {
-        flex-direction: column;
-    }
-
-    .greeting-form input,
-    .greeting-form button {
-        width: 100%;
-        max-width: 320px;
-    }
-}
-/* ===== SOLACE: Tea cards and order buttons ===== */
-
-.tea-card {
-    display: flex !important;
-    flex-direction: column;
-    height: 100%;
-    min-height: 450px;
-}
-
-.tea-card-image {
-    display: block;
-    width: 100%;
-    height: 210px;
-    object-fit: cover;
-}
-
-.tea-card .card-body {
-    display: flex !important;
-    flex: 1 1 auto;
-    flex-direction: column;
-    padding: 1.35rem;
-}
-
-.tea-card .tea-price {
-    margin-top: auto;
-    padding-top: 1rem;
-}
-
-.tea-card button[data-add-to-order] {
-    display: flex !important;
-    visibility: visible !important;
-    opacity: 1 !important;
-    width: 100% !important;
-    min-height: 48px;
-    align-items: center;
-    justify-content: center;
-    margin-top: 1rem !important;
-    padding: 12px 16px;
-    color: #fff !important;
-    background: #3b2920 !important;
-    border: 1px solid #3b2920 !important;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-}
-
-.tea-card button[data-add-to-order]:hover {
-    background: #8b5e3c !important;
-    border-color: #8b5e3c !important;
-}
-
-/* ===== FAQ: one outer box, no nested answer box ===== */
-
-.solace-faq__item {
-    padding: 0 !important;
-    border: 1px solid #eadcc9;
-    border-radius: 12px;
-    overflow: hidden;
-    background: #fff;
-    box-shadow: 0 4px 14px rgba(59, 41, 32, .05);
-}
-
-.solace-faq__question {
-    width: 100%;
-    min-height: 66px;
-    padding: 18px 22px;
-    line-height: 1.45;
-}
-
-.solace-faq__answer {
-    margin: 0 !important;
-    padding: 0 22px 18px !important;
-    border: 0 !important;
-    border-radius: 0 !important;
-    background: #fff !important;
-    box-shadow: none !important;
-}
-
-.solace-faq__answer p {
-    margin: 0 !important;
-    padding: 12px 0 0 !important;
-    border-top: 1px solid #f0e5d8;
-    line-height: 1.65;
-}
-
-/* ===== Menu card hover ===== */
-
-.menu-card,
-.dessert-card,
-.tea-card {
-    transition: transform .3s ease, box-shadow .3s ease;
-}
-
-.menu-card:hover,
-.dessert-card:hover,
-.tea-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 16px 32px rgba(59, 41, 32, .18);
+    .rating-card { padding: 20px 15px 17px; }
+    .datetime-section { padding: 14px 14px 18px; }
+    .datetime-card { padding: 15px 13px; }
+    .datetime-display { gap: 5px 12px; padding: 9px; }
+    #currentTime { font-size: 1.2rem; }
+    .greeting-section { padding: 42px 16px; }
+    .greeting-form { flex-direction: column; align-items: stretch; }
+    .greeting-form input, #greetingButton { width: 100%; }
 }
