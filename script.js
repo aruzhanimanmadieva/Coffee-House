@@ -394,7 +394,6 @@ document.addEventListener("keydown", function (event) {
 
         navLinks[previousIndex].focus();
     }
-});
 
     // =====================================
     // MENU: TEA PRODUCTS
