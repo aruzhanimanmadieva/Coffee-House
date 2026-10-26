@@ -104,57 +104,33 @@ document.addEventListener("DOMContentLoaded", function () {
  // =====================================
 // ASSIGNMENT 5: SOUND EFFECT
 // =====================================
-
 function playSuccessSound() {
-    try {
-        const AudioContextClass =
-            window.AudioContext || window.webkitAudioContext;
+    const audioContext = new (
+        window.AudioContext || window.webkitAudioContext
+    )();
 
-        if (!AudioContextClass) return;
+    const oscillator = audioContext.createOscillator();
+    const volume = audioContext.createGain();
 
-        const audio = new AudioContextClass();
+    oscillator.connect(volume);
+    volume.connect(audioContext.destination);
 
-        if (audio.state === "suspended") {
-            audio.resume();
-        }
+    oscillator.frequency.value = 880;
+    oscillator.type = "sine";
 
-        const now = audio.currentTime;
+    volume.gain.setValueAtTime(0.3, audioContext.currentTime);
+    volume.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.4
+    );
 
-        [[660, 0], [880, 0.12]].forEach(function (note) {
-            const oscillator = audio.createOscillator();
-            const gain = audio.createGain();
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.4);
 
-            oscillator.type = "triangle";
-            oscillator.frequency.setValueAtTime(
-                note[0],
-                now + note[1]
-            );
-
-            gain.gain.setValueAtTime(0.001, now + note[1]);
-            gain.gain.linearRampToValueAtTime(
-                0.22,
-                now + note[1] + 0.025
-            );
-            gain.gain.exponentialRampToValueAtTime(
-                0.001,
-                now + note[1] + 0.24
-            );
-
-            oscillator.connect(gain);
-            gain.connect(audio.destination);
-
-            oscillator.start(now + note[1]);
-            oscillator.stop(now + note[1] + 0.25);
-        });
-
-        window.setTimeout(function () {
-            audio.close();
-        }, 600);
-    } catch (error) {
-        console.info("Sound is unavailable in this browser.");
-    }
+    oscillator.onended = function () {
+        audioContext.close();
+    };
 }
-
     // =====================================
     // TASK 3: SUBSCRIPTION POPUP
     // =====================================
@@ -395,7 +371,7 @@ document.addEventListener("keydown", function (event) {
         navLinks[previousIndex].focus();
     }
 });
-    // =====================================
+// =====================================
     // MENU: TEA PRODUCTS
     // =====================================
 
@@ -505,7 +481,8 @@ document.addEventListener("keydown", function (event) {
 
     // Event delegation works for both HTML cards and dynamic tea cards.
     document.addEventListener("click", function (event) {
-        const button = event.target.closest("[data-add-to-order]");
+        const button =
+event.target.closest("[data-add-to-order]");
 
         if (!button) return;
 
@@ -638,7 +615,8 @@ document.addEventListener("keydown", function (event) {
         });
 
         filterButtons.forEach(function (button) {
-            const active = button.dataset.filter === selectedCategory;
+            const active
+= button.dataset.filter === selectedCategory;
 
             button.classList.toggle("is-active", active);
             button.setAttribute("aria-pressed", String(active));
@@ -762,5 +740,6 @@ document.addEventListener("keydown", function (event) {
 
         showStep(1);
     }
+
 
 });
