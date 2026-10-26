@@ -2285,3 +2285,138 @@ body.popup-open {
     }
 
 }
+
+/* =====================================
+   ASSIGNMENT 5: RATING
+===================================== */
+
+.rating-section,
+.greeting-section {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.rating-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 35px 20px;
+    border-radius: 16px;
+    background-color: var(--cream-light, #f8f3eb);
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.rating-star {
+    padding: 5px;
+    border: none;
+    background: transparent;
+    color: #c8c0b5;
+    font-size: 38px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rating-star:hover {
+    transform: scale(1.15);
+}
+
+.rating-star.selected {
+    color: #c58b35;
+    animation: starPop 0.25s ease;
+}
+
+@keyframes starPop {
+    0% {
+        transform: scale(0.8);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================
+   ASSIGNMENT 5: GREETING
+===================================== */
+
+.greeting-section {
+    background-color: var(--cream-light, #f8f3eb);
+}
+
+.greeting-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.greeting-form label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.greeting-form input {
+    max-width: 280px;
+    padding: 12px;
+    border: 1px solid #c8b9a5;
+    border-radius: 6px;
+}
+
+.greeting-form button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6f4e37;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.greeting-form button:hover {
+    background-color: #513725;
+}
+
+#ratingMessage,
+#greetingMessage {
+    margin-top: 15px;
+}
+
+@media (max-width: 576px) {
+    .rating-section,
+    .greeting-section {
+        padding: 45px 15px;
+    }
+
+    .rating-star {
+        font-size: 32px;
+    }
+
+    .greeting-form {
+        flex-direction: column;
+    }
+
+    .greeting-form input,
+    .greeting-form button {
+        width: 100%;
+        max-width: 320px;
+    }
+}
