@@ -104,33 +104,57 @@ document.addEventListener("DOMContentLoaded", function () {
  // =====================================
 // ASSIGNMENT 5: SOUND EFFECT
 // =====================================
+
 function playSuccessSound() {
-    const audioContext = new (
-        window.AudioContext || window.webkitAudioContext
-    )();
+    try {
+        const AudioContextClass =
+            window.AudioContext || window.webkitAudioContext;
 
-    const oscillator = audioContext.createOscillator();
-    const volume = audioContext.createGain();
+        if (!AudioContextClass) return;
 
-    oscillator.connect(volume);
-    volume.connect(audioContext.destination);
+        const audio = new AudioContextClass();
 
-    oscillator.frequency.value = 880;
-    oscillator.type = "sine";
+        if (audio.state === "suspended") {
+            audio.resume();
+        }
 
-    volume.gain.setValueAtTime(0.3, audioContext.currentTime);
-    volume.gain.exponentialRampToValueAtTime(
-        0.001,
-        audioContext.currentTime + 0.4
-    );
+        const now = audio.currentTime;
 
-    oscillator.start();
-    oscillator.stop(audioContext.currentTime + 0.4);
+        [[660, 0], [880, 0.12]].forEach(function (note) {
+            const oscillator = audio.createOscillator();
+            const gain = audio.createGain();
 
-    oscillator.onended = function () {
-        audioContext.close();
-    };
+            oscillator.type = "triangle";
+            oscillator.frequency.setValueAtTime(
+                note[0],
+                now + note[1]
+            );
+
+            gain.gain.setValueAtTime(0.001, now + note[1]);
+            gain.gain.linearRampToValueAtTime(
+                0.22,
+                now + note[1] + 0.025
+            );
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                now + note[1] + 0.24
+            );
+
+            oscillator.connect(gain);
+            gain.connect(audio.destination);
+
+            oscillator.start(now + note[1]);
+            oscillator.stop(now + note[1] + 0.25);
+        });
+
+        window.setTimeout(function () {
+            audio.close();
+        }, 600);
+    } catch (error) {
+        console.info("Sound is unavailable in this browser.");
+    }
 }
+
     // =====================================
     // TASK 3: SUBSCRIPTION POPUP
     // =====================================
@@ -371,5 +395,373 @@ document.addEventListener("keydown", function (event) {
         navLinks[previousIndex].focus();
     }
 });
+
+    // =====================================
+    // MENU: TEA PRODUCTS
+    // =====================================
+
+    const teaProducts = [
+        {
+            name: "Jasmine Green Tea",
+            description: "Light green tea with a gentle floral aroma.",
+            price: 1200,
+            image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=900&q=85",
+            icon: "🍵"
+        },
+        {
+            name: "Earl Grey",
+            description: "Classic black tea with fragrant bergamot.",
+            price: 1100,
+            image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=900&q=85",
+            icon: "🫖"
+        },
+        {
+            name: "Honey Ginger Tea",
+            description: "A warming blend of ginger, honey and lemon.",
+            price: 1300,
+            image: "https://images.unsplash.com/photo-1563911892437-664e7f4b5c0c?auto=format&fit=crop&w=900&q=85",
+            icon: "🍯"
+        }
+    ];
+
+    const teaContainer = document.getElementById("teaProducts");
+    const orderCountElement = document.getElementById("orderCount");
+    const orderMessage = document.getElementById("orderMessage");
+    const clearOrderButton = document.getElementById("clearOrder");
+
+    let orderItems = [];
+
+    if (teaContainer) {
+        teaContainer.innerHTML = teaProducts.map(function (product) {
+            return `
+                <div class="col-12 col-md-6 col-lg-4 tea-product-item">
+                    <article class="tea-card">
+                        <img
+                            class="tea-card-image"
+                            src="${product.image}"
+                            alt="${product.name}"
+                            loading="lazy"
+                            onerror="this.hidden=true; this.nextElementSibling.hidden=false"
+                        >
+
+                        <div class="tea-card-art" hidden aria-hidden="true">
+                            ${product.icon}
+                        </div>
+
+                        <div class="card-body">
+                            <h3 class="card-title">${product.name}</h3>
+                            <p class="card-text">${product.description}</p>
+                            <p class="tea-price">${product.price.toLocaleString("en-US")} ₸</p>
+
+                            <button
+                                class="btn btn-primary solace-btn tea-order-button"
+                                type="button"
+                                data-add-to-order
+                                data-product-name="${product.name}"
+                                data-product-price="${product.price}">
+                                Add to Order
+                            </button>
+                        </div>
+                    </article>
+                </div>
+            `;
+        }).join("");
+    }
+
+    // =====================================
+    // MENU: ADD ITEMS TO ORDER
+    // =====================================
+
+    function updateOrderSummary() {
+        if (orderCountElement) {
+            orderCountElement.textContent = orderItems.length;
+        }
+
+        if (orderMessage) {
+            orderMessage.textContent = orderItems.length
+                ? orderItems.map(function (item) {
+                    return item.name;
+                }).join(", ")
+                : "Choose something lovely.";
+        }
+    }
+
+    function addProductToOrder(name, price) {
+        orderItems.push({
+            name: name,
+            price: Number(price) || 0
+        });
+
+        updateOrderSummary();
+
+        if (orderMessage) {
+            orderMessage.classList.remove("order-message-pop");
+            void orderMessage.offsetWidth;
+            orderMessage.classList.add("order-message-pop");
+        }
+
+        // Reuse the sound function already in your script.js.
+        playSuccessSound();
+    }
+
+    // Event delegation works for both HTML cards and dynamic tea cards.
+    document.addEventListener("click", function (event) {
+        const button = event.target.closest("[data-add-to-order]");
+
+        if (!button) return;
+
+        event.preventDefault();
+
+        const card = button.closest(
+            ".menu-card, .dessert-card, .tea-card"
+        );
+
+        const title = card
+            ? card.querySelector(".card-title")
+            : null;
+
+        const priceElement = card
+            ? card.querySelector(".sizes strong, .tea-price, .card-body > strong")
+            : null;
+
+        const name = button.dataset.productName ||
+            (title ? title.textContent.trim() : "SOLACE item");
+
+        const price = button.dataset.productPrice ||
+            (priceElement
+                ? priceElement.textContent.replace(/[^0-9.]/g, "")
+                : "0");
+
+        addProductToOrder(name, price);
+
+        const originalText = button.textContent;
+        button.textContent = "Added ✓";
+
+        window.setTimeout(function () {
+            if (button.isConnected) {
+                button.textContent = originalText;
+            }
+        }, 1000);
+    });
+
+    // Add buttons to dessert cards if they do not already have one.
+    document.querySelectorAll(".dessert-card").forEach(function (card) {
+        const body = card.querySelector(".card-body");
+
+        if (!body || body.querySelector("[data-add-to-order]")) return;
+
+        const title = card.querySelector(".card-title");
+        const price = body.querySelector("strong");
+        const button = document.createElement("button");
+
+        button.type = "button";
+        button.className = "btn btn-primary solace-btn mt-3";
+        button.dataset.addToOrder = "";
+        button.dataset.productName = title
+            ? title.textContent.trim()
+            : "Dessert";
+        button.dataset.productPrice = price
+            ? price.textContent.replace(/[^0-9.]/g, "")
+            : "0";
+        button.textContent = "Add to Order";
+
+        body.appendChild(button);
+    });
+
+    if (clearOrderButton) {
+        clearOrderButton.addEventListener("click", function () {
+            orderItems = [];
+            updateOrderSummary();
+        });
+    }
+
+    // =====================================
+    // MENU: CATEGORY FILTERS
+    // =====================================
+
+    const filterButtons = Array.from(
+        document.querySelectorAll("[data-filter]")
+    );
+
+    const menuSections = Array.from(
+        document.querySelectorAll("[data-menu-section]")
+    );
+
+    const pageProducts = Array.from(
+        document.querySelectorAll(".menu-card, .dessert-card")
+    ).map(function (card) {
+        const section = card.closest("[data-menu-section]");
+        const wrapper = card.closest(
+            ".col-12, .col-md-6, .col-lg-4"
+        ) || card.parentElement;
+
+        return {
+            card: card,
+            wrapper: wrapper,
+            category: section ? section.dataset.menuSection : "Other"
+        };
+    });
+
+    function filterMenu(category) {
+        let selectedCategory;
+
+        switch (category) {
+            case "Coffee":
+                selectedCategory = "Coffee";
+                break;
+            case "Tea":
+                selectedCategory = "Tea";
+                break;
+            case "Desserts":
+                selectedCategory = "Desserts";
+                break;
+            default:
+                selectedCategory = "All";
+        }
+
+        pageProducts.forEach(function (product) {
+            product.wrapper.hidden =
+                selectedCategory !== "All" &&
+                product.category !== selectedCategory;
+        });
+
+        document.querySelectorAll(".tea-product-item").forEach(function (item) {
+            item.hidden = selectedCategory !== "All" &&
+                selectedCategory !== "Tea";
+        });
+
+        menuSections.forEach(function (section) {
+            const shouldShow = selectedCategory === "All" ||
+                section.dataset.menuSection === selectedCategory;
+
+            section.hidden = !shouldShow;
+            section.style.display = shouldShow ? "" : "none";
+        });
+
+        filterButtons.forEach(function (button) {
+            const active = button.dataset.filter === selectedCategory;
+
+            button.classList.toggle("is-active", active);
+            button.setAttribute("aria-pressed", String(active));
+        });
+    }
+
+    filterButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            filterMenu(button.dataset.filter);
+        });
+    });
+
+    // =====================================
+    // CONTACT FORM: THREE STEPS
+    // =====================================
+
+    const contactForm = document.getElementById("contactForm");
+
+    if (contactForm) {
+        const steps = Array.from(
+            contactForm.querySelectorAll(".form-step")
+        );
+
+        const progressSteps = Array.from(
+            contactForm.querySelectorAll("[data-progress-step]")
+        );
+
+        const stepStatus = document.getElementById("contactStepStatus");
+        const message = document.getElementById("contactFormMessage");
+
+        let currentStep = 1;
+
+        const descriptions = {
+            1: "Step 1 of 3 — tell us who you are.",
+            2: "Step 2 of 3 — choose your preferences.",
+            3: "Step 3 of 3 — leave us a message."
+        };
+
+        function showStep(stepNumber) {
+            currentStep = stepNumber;
+
+            steps.forEach(function (step) {
+                const active = Number(step.dataset.step) === currentStep;
+                step.hidden = !active;
+                step.classList.toggle("is-visible", active);
+            });
+
+            progressSteps.forEach(function (step) {
+                step.classList.toggle(
+                    "is-current",
+                    Number(step.dataset.progressStep) === currentStep
+                );
+            });
+
+            if (stepStatus) {
+                stepStatus.textContent = descriptions[currentStep];
+            }
+
+            if (message) {
+                message.textContent = "";
+                message.className = "contact-form-message";
+            }
+        }
+
+        function validateStep() {
+            const activeStep = steps.find(function (step) {
+                return Number(step.dataset.step) === currentStep;
+            });
+
+            if (!activeStep) return false;
+
+            let valid = true;
+
+            activeStep.querySelectorAll(
+                "input[required], select[required], textarea[required]"
+            ).forEach(function (field) {
+                field.classList.remove("is-invalid");
+
+                if (!field.checkValidity() || !field.value.trim()) {
+                    field.classList.add("is-invalid");
+                    valid = false;
+                }
+            });
+
+            if (!valid && message) {
+                message.textContent =
+                    "Please complete the required fields correctly.";
+                message.className = "contact-form-message error";
+            }
+
+            return valid;
+        }
+
+        contactForm.querySelectorAll("[data-next-step]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (validateStep() && currentStep < 3) {
+                    showStep(currentStep + 1);
+                }
+            });
+        });
+
+        contactForm.querySelectorAll("[data-previous-step]").forEach(function (button) {
+            button.addEventListener("click", function () {
+                if (currentStep > 1) {
+                    showStep(currentStep - 1);
+                }
+            });
+        });
+
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            if (!validateStep()) return;
+
+            if (message) {
+                message.textContent =
+                    "Thank you for contacting SOLACE! This demo does not send an email.";
+                message.className = "contact-form-message success";
+            }
+        });
+
+        showStep(1);
+    }
 
 });
