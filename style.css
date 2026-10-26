@@ -2184,105 +2184,44 @@ body.popup-open {
    TASK 2 — FAQ ACCORDION
    ===================================================== */
 
-.solace-faq {
-padding: 60px 20px;
-background: #fffaf3;
-color: #3b2920;
+.faq-section {
+    background: var(--cream);
 }
 
-.solace-faq__container {
-max-width: 800px;
-margin: 0 auto;
+.solace-accordion .accordion-item {
+    background: var(--cream-light);
+    border: 1px solid var(--line);
+    border-radius: 0;
+    margin-bottom: 12px;
 }
 
-.solace-faq__label {
-text-align: center;
-letter-spacing: 2px;
-font-size: 0.85rem;
+.solace-accordion .accordion-button {
+    background: var(--cream-light);
+    color: var(--brown);
+    font-family: "DM Sans", Arial, sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 20px;
+    box-shadow: none;
 }
 
-.solace-faq__container h2 {
-text-align: center;
-margin: 12px 0;
+.solace-accordion .accordion-button:not(.collapsed) {
+    background: #e9e0d5;
+    color: var(--brown);
 }
 
-.solace-faq__description {
-text-align: center;
-color: #786459;
-margin-bottom: 30px;
+.solace-accordion .accordion-button:focus {
+    box-shadow: 0 0 0 3px rgba(168, 117, 78, 0.2);
 }
 
-.solace-faq__item {
-margin-bottom: 12px;
-border: 1px solid #eadcc9;
-border-radius: 8px;
-overflow: hidden;
-background: #fff;
+.solace-accordion .accordion-body {
+    background: var(--cream-light);
+    color: var(--brown-light);
+    font-size: 14px;
+    line-height: 1.8;
+    padding: 20px;
 }
 
-.solace-faq__question {
-display: flex;
-align-items: center;
-justify-content: space-between;
-gap: 16px;
-width: 100%;
-padding: 18px 20px;
-border: none;
-background: #eee3d5;
-color: #3b2920;
-font: inherit;
-font-weight: 600;
-text-align: left;
-cursor: pointer;
-}
-
-.solace-faq__question:hover {
-background: #e6d5c2;
-}
-
-.solace-faq__question:focus-visible {
-outline: 2px solid #a8754e;
-outline-offset: -3px;
-}
-
-.solace-faq__icon {
-font-size: 1.4rem;
-flex-shrink: 0;
-transition: transform 0.3s ease;
-}
-
-.solace-faq__question[aria-expanded=“true”] .solace-faq__icon {
-transform: rotate(45deg);
-}
-
-.solace-faq__answer {
-display: grid;
-grid-template-rows: 1fr;
-transition: grid-template-rows 0.3s ease;
-}
-
-.solace-faq__answer[hidden] {
-display: none;
-}
-
-.solace-faq__answer p {
-min-height: 0;
-margin: 0;
-padding: 18px 20px;
-color: #786459;
-line-height: 1.7;
-}
-
-@media (max-width: 576px) {
-.solace-faq {
-padding: 40px 15px;
-}
-
-.solace-faq__question {
-    padding: 15px;
-}
-
-}
 
 /* =====================================================
    TASK 4 — BACKGROUND COLOR CHANGER
@@ -2345,4 +2284,139 @@ padding: 40px 15px;
         padding: 9px 16px;
     }
 
+}
+
+/* =====================================
+   ASSIGNMENT 5: RATING
+===================================== */
+
+.rating-section,
+.greeting-section {
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.rating-card {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 35px 20px;
+    border-radius: 16px;
+    background-color: var(--cream-light, #f8f3eb);
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.rating-star {
+    padding: 5px;
+    border: none;
+    background: transparent;
+    color: #c8c0b5;
+    font-size: 38px;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.rating-star:hover {
+    transform: scale(1.15);
+}
+
+.rating-star.selected {
+    color: #c58b35;
+    animation: starPop 0.25s ease;
+}
+
+@keyframes starPop {
+    0% {
+        transform: scale(0.8);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/* =====================================
+   ASSIGNMENT 5: GREETING
+===================================== */
+
+.greeting-section {
+    background-color: var(--cream-light, #f8f3eb);
+}
+
+.greeting-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px auto;
+}
+
+.greeting-form label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.greeting-form input {
+    max-width: 280px;
+    padding: 12px;
+    border: 1px solid #c8b9a5;
+    border-radius: 6px;
+}
+
+.greeting-form button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    background-color: #6f4e37;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.greeting-form button:hover {
+    background-color: #513725;
+}
+
+#ratingMessage,
+#greetingMessage {
+    margin-top: 15px;
+}
+
+@media (max-width: 576px) {
+    .rating-section,
+    .greeting-section {
+        padding: 45px 15px;
+    }
+
+    .rating-star {
+        font-size: 32px;
+    }
+
+    .greeting-form {
+        flex-direction: column;
+    }
+
+    .greeting-form input,
+    .greeting-form button {
+        width: 100%;
+        max-width: 320px;
+    }
 }
