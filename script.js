@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 nameError.textContent = "Please enter your name.";
                 name.classList.add("invalid");
                 valid = false;
+
             }
             if (!emailPattern.test(email.value.trim())) {
                 emailError.textContent = "Please enter a valid email.";
@@ -100,6 +101,36 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+ // =====================================
+// ASSIGNMENT 5: SOUND EFFECT
+// =====================================
+function playSuccessSound() {
+    const audioContext = new (
+        window.AudioContext || window.webkitAudioContext
+    )();
+
+    const oscillator = audioContext.createOscillator();
+    const volume = audioContext.createGain();
+
+    oscillator.connect(volume);
+    volume.connect(audioContext.destination);
+
+    oscillator.frequency.value = 880;
+    oscillator.type = "sine";
+
+    volume.gain.setValueAtTime(0.3, audioContext.currentTime);
+    volume.gain.exponentialRampToValueAtTime(
+        0.001,
+        audioContext.currentTime + 0.4
+    );
+
+    oscillator.start();
+    oscillator.stop(audioContext.currentTime + 0.4);
+
+    oscillator.onended = function () {
+        audioContext.close();
+    };
+}
     // =====================================
     // TASK 3: SUBSCRIPTION POPUP
     // =====================================
@@ -155,9 +186,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     "Please enter a valid email address.";
                 return;
             }
-            subscriptionMessage.textContent =
-                "Thank you for subscribing to our Coffee Club!";
-            subscriptionForm.reset();
+           subscriptionMessage.textContent =
+    "Thank you for subscribing to our Coffee Club!";
+
+playSuccessSound();
+
+subscriptionForm.reset();
         });
     }
     // =====================================
@@ -205,4 +239,137 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     updateDateTime();
     setInterval(updateDateTime, 1000);
+// =====================================
+// ASSIGNMENT 5: INTERACTIVE RATING
+// =====================================
+
+const ratingStars = document.querySelectorAll(".rating-star");
+const ratingMessage = document.getElementById("ratingMessage");
+
+const ratingTexts = [
+    "We are sorry to hear that.",
+    "We will try to do better.",
+    "Thank you for your feedback!",
+    "We are glad you enjoyed your visit!",
+    "Thank you for loving Solace!"
+];
+
+ratingStars.forEach(function (star) {
+    star.addEventListener("click", function () {
+        const rating = Number(star.dataset.rating);
+
+        ratingStars.forEach(function (item) {
+            const value = Number(item.dataset.rating);
+
+            if (value <= rating) {
+                item.classList.add("selected");
+            } else {
+                item.classList.remove("selected");
+            }
+        });
+
+        if (ratingMessage) {
+            ratingMessage.textContent = ratingTexts[rating - 1];
+        }
+    });
+});
+// =====================================
+// ASSIGNMENT 5: DYNAMIC GREETING
+// =====================================
+
+const visitorName = document.getElementById("visitorName");
+const greetingButton = document.getElementById("greetingButton");
+const greetingMessage = document.getElementById("greetingMessage");
+
+const greetings = {
+    morning: "Good morning",
+    afternoon: "Good afternoon",
+    evening: "Good evening",
+    night: "Good night",
+
+    getGreeting: function (period, name) {
+        return this[period] + ", " + name + "! Welcome to Solace.";
+    }
+};
+
+if (visitorName && greetingButton && greetingMessage) {
+    greetingButton.addEventListener("click", function () {
+        const name = visitorName.value.trim();
+
+        if (name === "") {
+            greetingMessage.textContent = "Please enter your name.";
+            return;
+        }
+
+        const hour = new Date().getHours();
+        let period;
+
+        switch (true) {
+            case hour >= 5 && hour < 12:
+                period = "morning";
+                break;
+
+            case hour >= 12 && hour < 17:
+                period = "afternoon";
+                break;
+
+            case hour >= 17 && hour < 21:
+                period = "evening";
+                break;
+
+            default:
+                period = "night";
+        }
+
+        greetingMessage.textContent = greetings.getGreeting(period, name);
+    });
+}
+// =====================================
+// ASSIGNMENT 5: KEYBOARD NAVIGATION
+// =====================================
+
+const navLinks = document.querySelectorAll(
+    ".main-navbar .nav-link, .main-navbar .nav-order"
+);
+
+document.addEventListener("keydown", function (event) {
+    const activeElement = document.activeElement;
+
+    if (
+        activeElement.tagName === "INPUT" ||
+        activeElement.tagName === "TEXTAREA" ||
+        activeElement.tagName === "SELECT"
+    ) {
+        return;
+    }
+
+    if (navLinks.length === 0) {
+        return;
+    }
+
+    const currentIndex = Array.from(navLinks).indexOf(activeElement);
+
+    if (event.key === "ArrowRight") {
+        event.preventDefault();
+
+        const nextIndex =
+            currentIndex === -1
+                ? 0
+                : (currentIndex + 1) % navLinks.length;
+
+        navLinks[nextIndex].focus();
+    }
+
+    if (event.key === "ArrowLeft") {
+        event.preventDefault();
+
+        const previousIndex =
+            currentIndex === -1
+                ? navLinks.length - 1
+                : (currentIndex - 1 + navLinks.length) % navLinks.length;
+
+        navLinks[previousIndex].focus();
+    }
+});
+
 });
