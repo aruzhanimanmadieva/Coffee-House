@@ -930,13 +930,101 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /* =========================================================
    ASSIGNMENT 6 - JQUERY FEATURES
-   Tasks 0, 2, 4, 8 and 9
-   Existing Assignment 5 code above is preserved.
 ========================================================= */
-
 $(document).ready(function () {
-    // Task 0: Confirm that jQuery has loaded successfully.
     console.log("jQuery is ready!");
+
+    // Task 1: Real-time Search
+    $("#aboutSearch").on("keyup", function () {
+        let searchText = $(this).val().toLowerCase();
+
+        $(".team-grid > div").filter(function () {
+            $(this).toggle(
+                $(this).text().toLowerCase().indexOf(searchText) > -1
+            );
+        });
+    });
+
+// Task 3: Search Highlighting
+
+let originalContent = $(".people-section, .service-people, .story-section, .values-section").map(function () {
+    return $(this).html();
+}).get();
+
+$("#highlightButton").on("click", function () {
+    let searchWord = $("#highlightSearch").val().trim();
+
+    if (searchWord === "") {
+        alert("Please enter a word!");
+        return;
+    }
+
+    let regex = new RegExp(
+        "(" + searchWord.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")",
+        "gi"
+    );
+
+    $(".people-section, .service-people, .story-section, .values-section").each(function () {
+        let originalHTML = $(this).data("originalHTML");
+
+        if (!originalHTML) {
+            originalHTML = $(this).html();
+            $(this).data("originalHTML", originalHTML);
+        }
+
+        let newHTML = originalHTML.replace(
+            regex,
+            '<mark class="search-highlight">$1</mark>'
+        );
+
+        $(this).html(newHTML);
+    });
+});
+// Task 5: Animated Number Counter
+$(".counter-number").each(function () {
+    let target = $(this).data("target");
+
+    $(this).prop("Counter", 0).animate(
+        {
+            Counter: target
+        },
+        {
+            duration: 2000,
+            easing: "swing",
+            step: function (now) {
+                $(this).text(Math.ceil(now) + "+");
+            }
+        }
+    );
+});
+// Task 7: Notification System
+
+$("body").append('<div id="toastNotification"></div>');
+
+function showToast(message) {
+    $("#toastNotification")
+        .stop(true, true)
+        .text(message)
+        .fadeIn(400);
+
+    setTimeout(function () {
+        $("#toastNotification").fadeOut(400);
+    }, 3000);
+}
+
+// Show notification after rating
+$(document).on("click", ".rating-star", function () {
+    showToast("Thank you for rating Solace Coffee House!");
+});
+
+// greeting notification
+$(document).on("click", "#greetingButton", function () {
+    setTimeout(function () {
+        if ($("#greetingMessage").text().trim() !== "") {
+            showToast("Thank you for visiting our website!");
+        }
+    }, 100);
+});
 
     // Task 4: Shared scroll progress bar on all four pages.
     if (!$("#a6ScrollProgress").length) {
