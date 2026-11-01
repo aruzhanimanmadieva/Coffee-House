@@ -38,6 +38,9 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
 
+    <!-- Assignment 6: jQuery library -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
+
 </head>
 
 
@@ -237,9 +240,11 @@
                             📍 Address
                         </h3>
 
-                        <p>
+                        <p id="contactAddressText">
                             15 Coffee Street, Astana
                         </p>
+                        <!-- Assignment 6 - Task 8: Copy address -->
+                        <button type="button" class="a6-copy-button" data-copy-target="#contactAddressText">Copy address</button>
 
                     </div>
 
@@ -269,9 +274,11 @@
                             📧 Email
                         </h3>
 
-                        <p>
+                        <p id="contactEmailText">
                             hello@solace.com
                         </p>
+                        <!-- Assignment 6 - Task 8: Copy email -->
+                        <button type="button" class="a6-copy-button" data-copy-target="#contactEmailText">Copy email</button>
 
                     </div>
 
@@ -580,7 +587,7 @@
 
                                                     <div class="form-step-actions">
                                 <button class="btn btn-outline-secondary" type="button" data-previous-step>← Back</button>
-                                <button type="submit" class="btn btn-primary btn-lg">Submit Message</button>
+                                <button id="contactSubmitButton" type="submit" class="btn btn-primary btn-lg">Submit Message</button>
                             </div>
                         </div>
                         <p id="contactFormMessage" class="contact-form-message" role="status" aria-live="polite"></p>
