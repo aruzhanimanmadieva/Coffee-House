@@ -25,6 +25,9 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Assignment 6: jQuery library -->
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 </head>
 
 <body>
@@ -142,6 +145,26 @@
             <h2>Something for every <em>mood.</em></h2>
             <p>Choose a category to explore the SOLACE menu.</p>
         </div>
+        <!-- Assignment 6 - Task 2: Autocomplete search -->
+        <div class="a6-autocomplete" id="menuAutocomplete">
+            <label class="a6-search-label" for="menuAutocompleteInput">Search the menu</label>
+            <input
+                type="search"
+                id="menuAutocompleteInput"
+                class="form-control a6-search-input"
+                placeholder="Start typing a drink or dessert..."
+                autocomplete="off"
+                aria-autocomplete="list"
+                aria-controls="menuAutocompleteSuggestions"
+                aria-expanded="false">
+            <div
+                id="menuAutocompleteSuggestions"
+                class="a6-search-suggestions"
+                role="listbox"
+                aria-label="Menu suggestions"
+                hidden></div>
+        </div>
+
         <div class="menu-filter-controls" role="group" aria-label="Filter products by category">
             <button class="menu-filter-button is-active" type="button" data-filter="All" aria-pressed="true">All</button>
             <button class="menu-filter-button" type="button" data-filter="Coffee" aria-pressed="false">Coffee</button>
@@ -151,6 +174,8 @@
         <div class="order-summary" aria-live="polite">
             <span>☕ Your order: <strong id="orderCount">0</strong> item(s)</span>
             <span id="orderMessage" class="order-message">Choose something lovely.</span>
+            <!-- Assignment 6 - Task 8: Copy current order -->
+            <button id="copyOrderButton" class="a6-copy-button" type="button">Copy order</button>
             <button id="clearOrder" class="clear-order-button" type="button">Clear order</button>
         </div>
     </div>
