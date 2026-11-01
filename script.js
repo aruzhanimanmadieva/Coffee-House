@@ -947,7 +947,7 @@ $(document).ready(function () {
 
 // Task 3: Search Highlighting
 
-let originalContent = $(".people-section, .service-people, .story-section, .values-section").map(function () {
+let originalContent = $(".people-section, .service-people, .story-section, .about-values-new, .about-story, .css-card-section, .css-card-section").map(function () {
     return $(this).html();
 }).get();
 
@@ -964,7 +964,7 @@ $("#highlightButton").on("click", function () {
         "gi"
     );
 
-    $(".people-section, .service-people, .story-section, .values-section").each(function () {
+    $(".people-section, .service-people, .story-section, .about-values-new, .about-story, .css-card-section, .css-card-section").each(function () {
         let originalHTML = $(this).data("originalHTML");
 
         if (!originalHTML) {
