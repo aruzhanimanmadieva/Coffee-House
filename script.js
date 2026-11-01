@@ -776,18 +776,27 @@ document.addEventListener("DOMContentLoaded", function () {
                 : "contact-form-message error";
         }
 
+        // Assignment 6 - Task 6: Loading state for the existing contact form.
+        // The original multi-step validation and success message are preserved.
         contactForm.addEventListener("submit", function (event) {
             event.preventDefault();
 
             if (!validateCurrentStep()) return;
 
+            const submitButton = document.getElementById("contactSubmitButton");
+            if (!submitButton || submitButton.disabled) return;
+
+            const originalButtonText = submitButton.textContent.trim();
+            submitButton.disabled = true;
+            submitButton.setAttribute("aria-busy", "true");
+            submitButton.innerHTML = '<span class="a6-submit-spinner" aria-hidden="true"></span><span>Please wait...</span>';
+
             window.setTimeout(function () {
                 showSubmissionResult(true);
-
-                contactForm.querySelectorAll("button").forEach(function (button) {
-                    button.disabled = true;
-                });
-            }, 150);
+                submitButton.disabled = false;
+                submitButton.removeAttribute("aria-busy");
+                submitButton.textContent = originalButtonText;
+            }, 1500);
         });
 
         showStep(1);
@@ -880,6 +889,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener("keydown", function (event) {
         const activeElement = document.activeElement;
 
+        // Do not interfere with typing or controls that use arrow keys.
         if (
             activeElement.tagName === "INPUT" ||
             activeElement.tagName === "TEXTAREA" ||
@@ -917,115 +927,239 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
-// ================= ASSIGNMENT 6: JQUERY =================
+
+/* =========================================================
+   ASSIGNMENT 6 - JQUERY FEATURES
+   Tasks 0, 2, 4, 8 and 9
+   Existing Assignment 5 code above is preserved.
+========================================================= */
+
 $(document).ready(function () {
+    // Task 0: Confirm that jQuery has loaded successfully.
     console.log("jQuery is ready!");
 
-    // Task 1: Real-time Search
-    $("#aboutSearch").on("keyup", function () {
-        let searchText = $(this).val().toLowerCase();
-
-        $(".team-grid > div").filter(function () {
-            $(this).toggle(
-                $(this).text().toLowerCase().indexOf(searchText) > -1
-            );
-        });
-    });
-
-// Task 3: Search Highlighting
-
-let originalContent = $(".people-section, .service-people, .story-section, .values-section").map(function () {
-    return $(this).html();
-}).get();
-
-$("#highlightButton").on("click", function () {
-    let searchWord = $("#highlightSearch").val().trim();
-
-    if (searchWord === "") {
-        alert("Please enter a word!");
-        return;
+    // Task 4: Shared scroll progress bar on all four pages.
+    if (!$("#a6ScrollProgress").length) {
+        $("body").prepend('<div id="a6ScrollProgress" role="progressbar" aria-label="Page scroll progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>');
     }
 
-    let regex = new RegExp(
-        "(" + searchWord.replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + ")",
-        "gi"
-    );
+    function updateScrollProgress() {
+        const scrollTop = $(window).scrollTop();
+        const scrollableHeight = $(document).height() - $(window).height();
+        const progress = scrollableHeight > 0
+            ? Math.min(100, Math.max(0, (scrollTop / scrollableHeight) * 100))
+            : 0;
 
-    $(".people-section, .service-people, .story-section, .values-section").each(function () {
-        let originalHTML = $(this).data("originalHTML");
+        $("#a6ScrollProgress")
+            .css("width", progress + "%")
+            .attr("aria-valuenow", Math.round(progress));
+    }
 
-        if (!originalHTML) {
-            originalHTML = $(this).html();
-            $(this).data("originalHTML", originalHTML);
+    $(window).on("scroll.a6Progress resize.a6Progress", updateScrollProgress);
+    updateScrollProgress();
+
+    // Task 2: Autocomplete suggestions are generated from the real menu cards,
+    // including tea cards that Assignment 5 creates dynamically.
+    window.setTimeout(function () {
+        const $searchInput = $("#menuAutocompleteInput");
+        const $suggestions = $("#menuAutocompleteSuggestions");
+
+        if (!$searchInput.length || !$suggestions.length) return;
+
+        function getMenuItems() {
+            const items = [];
+            $("#coffee-menu .menu-card, #tea-menu .tea-card, #desserts .dessert-card").each(function () {
+                const $card = $(this);
+                const name = $card.find(".card-title").first().text().trim();
+                const $section = $card.closest("[data-menu-section]");
+                if (name && !items.some(function (item) { return item.name.toLowerCase() === name.toLowerCase(); })) {
+                    items.push({
+                        name: name,
+                        card: this,
+                        section: $section.attr("id") || ""
+                    });
+                }
+            });
+            return items;
         }
 
-        let newHTML = originalHTML.replace(
-            regex,
-            '<mark class="search-highlight">$1</mark>'
-        );
+        function closeSuggestions() {
+            $suggestions.prop("hidden", true).empty();
+            $searchInput.attr("aria-expanded", "false");
+        }
 
-        $(this).html(newHTML);
-    });
-});
-// Task 5: Animated Number Counter
-$(".counter-number").each(function () {
-    let target = $(this).data("target");
+        function chooseSuggestion(item) {
+            $searchInput.val(item.name);
+            closeSuggestions();
 
-    $(this).prop("Counter", 0).animate(
-        {
-            Counter: target
-        },
-        {
-            duration: 2000,
-            easing: "swing",
-            step: function (now) {
-                $(this).text(Math.ceil(now) + "+");
+            // If the chosen item is in a filtered-out category, activate its category first.
+            const $section = $(item.card).closest("[data-menu-section]");
+            const category = $section.attr("data-menu-section");
+            if (category) {
+                const $filterButton = $(".menu-filter-button").filter(function () {
+                    return $(this).attr("data-filter") === category;
+                }).first();
+                if ($filterButton.length) $filterButton.trigger("click");
+            }
+
+            window.setTimeout(function () {
+                if (item.card && item.card.isConnected) {
+                    $("html, body").stop(true).animate({
+                        scrollTop: $(item.card).offset().top - 120
+                    }, 450);
+                }
+            }, 80);
+        }
+
+        $searchInput.on("input.a6Autocomplete", function () {
+            const query = $(this).val().trim().toLowerCase();
+            $suggestions.empty();
+
+            if (!query) {
+                closeSuggestions();
+                return;
+            }
+
+            const matches = getMenuItems().filter(function (item) {
+                return item.name.toLowerCase().includes(query);
+            }).slice(0, 7);
+
+            if (!matches.length) {
+                $("<div>", {
+                    "class": "a6-no-suggestions",
+                    text: "No matching menu items found."
+                }).appendTo($suggestions);
+            } else {
+                matches.forEach(function (item, index) {
+                    $("<button>", {
+                        type: "button",
+                        "class": "a6-suggestion-option",
+                        role: "option",
+                        "aria-selected": "false",
+                        text: item.name
+                    }).on("click", function () {
+                        chooseSuggestion(item);
+                    }).appendTo($suggestions);
+                });
+            }
+
+            $suggestions.prop("hidden", false);
+            $searchInput.attr("aria-expanded", "true");
+        });
+
+        $searchInput.on("keydown.a6Autocomplete", function (event) {
+            if (event.key === "Escape") closeSuggestions();
+            if (event.key === "Enter") {
+                const $firstOption = $suggestions.find(".a6-suggestion-option").first();
+                if (!$suggestions.prop("hidden") && $firstOption.length) {
+                    event.preventDefault();
+                    $firstOption.trigger("click");
+                }
+            }
+        });
+
+        $(document).on("click.a6Autocomplete", function (event) {
+            if (!$(event.target).closest("#menuAutocomplete").length) closeSuggestions();
+        });
+    }, 0);
+
+    // Task 8: Copy buttons for the current order, contact address and email.
+    if (!$("#a6CopyToast").length) {
+        $("body").append('<div id="a6CopyToast" class="a6-copy-toast" role="status" aria-live="polite"></div>');
+    }
+
+    function showCopyToast(message) {
+        $("#a6CopyToast")
+            .stop(true, true)
+            .text(message)
+            .fadeIn(180)
+            .delay(1500)
+            .fadeOut(250);
+    }
+
+    async function copyText(text) {
+        if (navigator.clipboard && window.isSecureContext) {
+            await navigator.clipboard.writeText(text);
+            return;
+        }
+
+        // Fallback for browsers where the Clipboard API is unavailable.
+        const temporaryInput = document.createElement("textarea");
+        temporaryInput.value = text;
+        temporaryInput.setAttribute("readonly", "");
+        temporaryInput.style.position = "fixed";
+        temporaryInput.style.opacity = "0";
+        document.body.appendChild(temporaryInput);
+        temporaryInput.select();
+        const copied = document.execCommand("copy");
+        temporaryInput.remove();
+        if (!copied) throw new Error("Clipboard copy was not successful");
+    }
+
+    $(document).on("click.a6Copy", ".a6-copy-button", async function () {
+        const $button = $(this);
+        let textToCopy = "";
+
+        if ($button.attr("data-copy-target")) {
+            textToCopy = $($button.attr("data-copy-target")).text().trim();
+        } else if ($button.attr("id") === "copyOrderButton") {
+            textToCopy = $("#orderMessage").text().trim();
+            if (!textToCopy || textToCopy === "Choose something lovely.") {
+                showCopyToast("Add an item to your order first.");
+                return;
             }
         }
-    );
-});
-// Task 7: Notification System
 
-$("body").append('<div id="toastNotification"></div>');
-
-function showToast(message) {
-    $("#toastNotification")
-        .stop(true, true)
-        .text(message)
-        .fadeIn(400);
-
-    setTimeout(function () {
-        $("#toastNotification").fadeOut(400);
-    }, 3000);
-}
-
-// Show notification after rating
-$(document).on("click", ".rating-star", function () {
-    showToast("Thank you for rating Solace Coffee House!");
-});
-
-// greeting notification
-$(document).on("click", "#greetingButton", function () {
-    setTimeout(function () {
-        if ($("#greetingMessage").text().trim() !== "") {
-            showToast("Thank you for visiting our website!");
+        if (!textToCopy) {
+            showCopyToast("There is no text to copy.");
+            return;
         }
-    }, 100);
+
+        try {
+            await copyText(textToCopy);
+            const originalText = $button.data("original-label") || $button.text().trim();
+            $button.data("original-label", originalText).addClass("is-copied").text("✓ Copied!");
+            showCopyToast("✓ Copied to clipboard!");
+            window.setTimeout(function () {
+                $button.removeClass("is-copied").text(originalText);
+            }, 1600);
+        } catch (error) {
+            showCopyToast("Copy was blocked by the browser. Please try again.");
+        }
+    });
+
+    // Task 9: jQuery scroll-based lazy loading for the Menu page images.
+    // Contact currently contains no content images, so nothing is added there unnecessarily.
+    window.setTimeout(function () {
+        const $menuImages = $("#coffee-menu img, #tea-menu img, #desserts img, #gallery img");
+        if (!$menuImages.length) return;
+
+        $menuImages.each(function () {
+            const $image = $(this);
+            const currentSource = $image.attr("src");
+            if (currentSource && !$image.attr("data-a6-src")) {
+                $image.attr("data-a6-src", currentSource);
+                $image.removeAttr("src");
+                $image.attr("loading", "lazy");
+            }
+        });
+
+        function loadImagesNearViewport() {
+            const viewportBottom = $(window).scrollTop() + $(window).height() + 180;
+
+            $("#coffee-menu img[data-a6-src], #tea-menu img[data-a6-src], #desserts img[data-a6-src], #gallery img[data-a6-src]").each(function () {
+                const $image = $(this);
+                const imageOffset = $image.offset();
+                if (!imageOffset) return; // Ignore images inside a currently hidden section.
+
+                if (imageOffset.top <= viewportBottom) {
+                    $image.attr("src", $image.attr("data-a6-src"));
+                    $image.removeAttr("data-a6-src");
+                }
+            });
+        }
+
+        $(window).on("scroll.a6Lazy resize.a6Lazy", loadImagesNearViewport);
+        loadImagesNearViewport();
+    }, 0);
 });
-
-// Task 4: Scroll Progress Bar
-
-$(window).on("scroll", function () {
-    let scrollTop = $(window).scrollTop();
-
-    let documentHeight = $(document).height();
-    let windowHeight = $(window).height();
-
-    let scrollPercent = (scrollTop / (documentHeight - windowHeight)) * 100;
-
-    $("#scrollProgress").css("width", scrollPercent + "%");
-});
-
-});
-
-
