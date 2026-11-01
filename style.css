@@ -2800,146 +2800,124 @@ textarea:focus-visible, select:focus-visible {
     .greeting-form input, #greetingButton { width: 100%; }
 }
 
-/* ASSIGNMENT 6. TASK 1: REAL-TIME SEARCH */
-.team-search {
-    margin: 25px 0 35px;
-}
+/* =========================================================
+   ASSIGNMENT 6 - TASK 2, 4, 6, 8 AND 9
+   New styles only; Assignment 5 styles above are preserved.
+========================================================= */
 
-#aboutSearch {
-    width: 100%;
-    max-width: 450px;
-    padding: 14px 18px;
-    border: 1px solid #c9b69f;
-    border-radius: 8px;
-    background-color: #fffaf4;
-    color: #3b2418;
-    font-size: 15px;
-    outline: none;
-    transition: 0.3s;
+/* Task 2: Menu autocomplete */
+.a6-autocomplete {
+    position: relative;
+    width: min(100%, 620px);
+    margin: 24px auto 22px;
+    text-align: left;
 }
-
-#aboutSearch:focus {
-    border-color: #8b6548;
-    box-shadow: 0 0 8px rgba(139, 101, 72, 0.2);
-}
-
-#aboutSearch::placeholder {
-    color: #9b8a7b;
-}
-/* Task 3: Search Highlighting */
-.search-highlight {
-    background-color: #e8c99b;
-    color: #3b2418;
-    padding: 2px 4px;
-    border-radius: 3px;
-}
-.highlight-search {
-    max-width: 550px;
-    margin: 30px auto;
-    padding: 25px;
-    background-color: #f3e8d8;
-    border-radius: 15px;
-    text-align: center;
-}
-
-.highlight-search h3 {
-    color: #4a2c20;
-    font-size: 24px;
+.a6-search-label {
+    display: block;
     margin-bottom: 8px;
+    color: var(--brown, #3b2920);
+    font-weight: 600;
 }
-
-.highlight-search p {
-    color: #80634f;
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.search-box {
-    display: flex;
-    gap: 10px;
-}
-
-.search-box input {
-    flex: 1;
-    min-width: 0;
-    padding: 13px 15px;
-    border: 1px solid #d8c3aa;
+.a6-search-input {
+    min-height: 48px;
+    border: 1px solid #d8c5b2;
     border-radius: 8px;
-    outline: none;
-    background: #fffcf7;
-    color: #4a2c20;
-    font-size: 14px;
+    background: #fffdf9;
 }
-
-.search-box input:focus {
-    border-color: #80543b;
+.a6-search-input:focus {
+    border-color: var(--brown-light, #8b5e3c);
+    box-shadow: 0 0 0 3px rgba(139, 94, 60, .13);
 }
-
-.search-box button {
-    padding: 13px 24px;
-    background-color: #603b2a;
-    color: white;
-    border: none;
+.a6-search-suggestions {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    z-index: 1050;
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid #e4d7ca;
     border-radius: 8px;
+    background: #fffdf9;
+    box-shadow: 0 10px 24px rgba(59, 41, 32, .12);
+}
+.a6-search-suggestions[hidden] { display: none !important; }
+.a6-suggestion-option {
+    display: block;
+    width: 100%;
+    padding: 11px 15px;
+    border: 0;
+    border-bottom: 1px solid #f0e8df;
+    background: transparent;
+    color: var(--brown, #3b2920);
+    text-align: left;
     cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s;
 }
+.a6-suggestion-option:last-child { border-bottom: 0; }
+.a6-suggestion-option:hover,
+.a6-suggestion-option:focus-visible { background: #f5ece3; outline: none; }
+.a6-no-suggestions { padding: 12px 15px; color: #786459; }
 
-.search-box button:hover {
-    background-color: #80543b;
-}
-
-.search-highlight {
-    background-color: #e8c99b;
-    color: #3b2418;
-    padding: 2px 4px;
-    border-radius: 3px;
-}
-/* Task 5: Animated Number Counter */
-
-.stats-section {
-    padding: 70px 0;
-    background-color: #f5eee5;
-    text-align: center;
-}
-
-.counter-number {
-    font-family: 'Playfair Display', serif;
-    font-size: 48px;
-    font-weight: bold;
-    color: #68452f;
-    margin-bottom: 10px;
-}
-
-.stats-section p {
-    font-size: 16px;
-    color: #786453;
-    letter-spacing: 1px;
-}
-/* Task 7: Notification System */
-
-#toastNotification {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    z-index: 9999;
-    background-color: #68452f;
-    color: white;
-    padding: 16px 24px;
-    border-radius: 8px;
-    font-size: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-}
-/* Task 4: Scroll Progress Bar */
-#scrollProgress {
+/* Task 4: Shared page scroll progress */
+#a6ScrollProgress {
     position: fixed;
     top: 0;
     left: 0;
-    width: 0%;
+    z-index: 20000;
+    width: 0;
     height: 5px;
-    background-color: #a77b55;
-    z-index: 99999;
-    transition: width 0.1s ease;
+    background: linear-gradient(90deg, #c59b76, #8b5e3c, #dfbd9d);
+    box-shadow: 0 1px 4px rgba(59, 41, 32, .18);
+    pointer-events: none;
+    transition: width .08s linear;
+}
+
+/* Task 6: Existing Contact submit button loading state */
+#contactSubmitButton:disabled { opacity: .78; cursor: wait; }
+.a6-submit-spinner {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    margin-right: 9px;
+    border: 2px solid rgba(255, 255, 255, .45);
+    border-top-color: #fff;
+    border-radius: 50%;
+    vertical-align: -2px;
+    animation: a6SpinnerRotation .7s linear infinite;
+}
+@keyframes a6SpinnerRotation { to { transform: rotate(360deg); } }
+
+/* Task 8: Copy controls and temporary confirmation toast */
+.a6-copy-button {
+    display: inline-block;
+    margin: 3px 0 8px;
+    padding: 7px 12px;
+    border: 1px solid var(--brown-light, #8b5e3c);
+    border-radius: 6px;
+    background: var(--brown-light, #8b5e3c);
+    color: #fff;
+    font: inherit;
+    font-size: .85rem;
+    cursor: pointer;
+    transition: background .2s ease, color .2s ease;
+}
+.a6-copy-button:hover { background: var(--brown, #3b2920); border-color: var(--brown, #3b2920); }
+.a6-copy-button.is-copied { background: #617b55; border-color: #617b55; }
+.a6-copy-toast {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 20001;
+    display: none;
+    max-width: min( calc(100vw - 44px), 340px );
+    padding: 12px 18px;
+    border-radius: 8px;
+    background: #493529;
+    color: #fff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+}
+
+@media (max-width: 575.98px) {
+    .a6-copy-toast { right: 14px; bottom: 14px; }
+    #a6ScrollProgress { height: 4px; }
 }
