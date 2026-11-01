@@ -45,7 +45,8 @@
 
 
 <body>
-
+<!-- ASSIGNMENT 6. TASK 4: SCROLL PROGRESS BAR -->
+<div id="scrollProgress"></div>
 
 <!-- ================= NAVBAR ================= -->
 
@@ -465,8 +466,32 @@
 
 </section>
 
+<!-- ASSIGNMENT 6. TASK 1: REAL-TIME SEARCH -->
+<div class="team-search">
+    <input
+        type="text"
+        id="aboutSearch"
+        placeholder="Search team members..."
+    >
+</div>
 
+<!-- ASSIGNMENT 6. TASK 3: SEARCH HIGHLIGHTING -->
+<div class="highlight-search">
+    <h3>Search & Highlight</h3>
+    <p>Find your favorite words in our story</p>
 
+    <div class="search-box">
+        <input
+            type="text"
+            id="highlightSearch"
+            placeholder="Enter a word..."
+        >
+
+        <button type="button" id="highlightButton">
+            Search
+        </button>
+    </div>
+</div>
 <!-- ================= MAIN TEAM ================= -->
 
 <section class="people-section">
@@ -746,8 +771,6 @@
 
 </section>
 
-
-
 <!-- ASSIGNMENT 5: DYNAMIC GREETING -->
 <section class="greeting-section">
     <div class="container">
@@ -1013,17 +1036,13 @@
 
 </footer>
 
+<!-- Bootstrap JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 
-<!-- Bootstrap JS -->
-
-<script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-
-<!-- JavaScript -->
+<!-- Our JavaScript -->
 <script src="script.js"></script>
-
 </body>
-
 </html>
