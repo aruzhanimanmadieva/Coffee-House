@@ -3032,7 +3032,6 @@ textarea:focus-visible, select:focus-visible {
     color: #68452f;
     margin-bottom: 10px;
 }
-
 .stats-section p {
     font-size: 16px;
     color: #786453;
@@ -3052,4 +3051,118 @@ textarea:focus-visible, select:focus-visible {
     border-radius: 8px;
     font-size: 15px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+
+/* =========================================================
+   SOLACE FINAL PROJECT — GLOBAL THEME SYSTEM
+   All page surfaces use shared tokens. final.js adds a contrast
+   safety pass for legacy components with hard-coded colors.
+   ========================================================= */
+:root {
+  color-scheme: light;
+  --solace-bg: #fffaf3;
+  --solace-section: #f7f0e7;
+  --solace-surface: #ffffff;
+  --solace-surface-soft: #f3e9dd;
+  --solace-text: #35271f;
+  --solace-muted: #746357;
+  --solace-border: #e4d6c8;
+  --solace-accent: #754b32;
+  --solace-input: #ffffff;
+  --cream: var(--solace-section);
+  --cream-light: var(--solace-bg);
+  --brown: var(--solace-text);
+  --brown-light: var(--solace-muted);
+  --accent: var(--solace-accent);
+  --line: var(--solace-border);
+  --white: var(--solace-surface);
+}
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --solace-bg: #191613;
+  --solace-section: #211c18;
+  --solace-surface: #2b241e;
+  --solace-surface-soft: #352b23;
+  --solace-text: #f4ece4;
+  --solace-muted: #c5b6a8;
+  --solace-border: #514337;
+  --solace-accent: #e0b58e;
+  --solace-input: #211c18;
+  --cream: var(--solace-section);
+  --cream-light: var(--solace-bg);
+  --brown: var(--solace-text);
+  --brown-light: var(--solace-muted);
+  --accent: var(--solace-accent);
+  --line: var(--solace-border);
+  --white: var(--solace-surface);
+}
+html[data-theme] body { background: var(--solace-bg) !important; color: var(--solace-text); transition: background-color .25s ease, color .25s ease; }
+html[data-theme] :is(h1,h2,h3,h4,h5,h6,p,li,label,small,strong,em,span,dt,dd,figcaption,.lead,.card-text,.card-title) { color: inherit; }
+html[data-theme] :is(.main-navbar,.site-footer,.footer) { background: var(--solace-surface) !important; color: var(--solace-text) !important; border-color: var(--solace-border) !important; }
+html[data-theme] :is(.hero,.menu-hero,.about-hero,.contact-hero,.about-story,.about-values-new,.stats-section,.contact-section,.menu-filter-section,.color-changer-section,.menu-actions,.about-final,.about-quote,.weather-section,.account-page,.menu-section,.tea-section,.dessert-section,.gallery-section,.team-section,.values-section,.faq-section,.rating-section) { background-color: var(--solace-bg) !important; color: var(--solace-text); }
+html[data-theme] :is(.card,.menu-card,.tea-card,.dessert-card,.contact-info,.contact-form-card,.weather-card,.account-card,.highlight-search,.search-box,.menu-hero-note,.about-hero-note,.team-member,.team-card,.value-card,.faq-item,.order-summary,.profile-details) { background-color: var(--solace-surface) !important; color: var(--solace-text) !important; border-color: var(--solace-border) !important; }
+html[data-theme] :is(.weather-recommendation,.profile-details,.menu-search-history,.menu-hero-note,.about-hero-note,.form-progress-step) { background-color: var(--solace-surface-soft); color: var(--solace-text); border-color: var(--solace-border); }
+html[data-theme] :is(input,textarea,select,.form-control,.form-select,.input-group-text) { background-color: var(--solace-input) !important; color: var(--solace-text) !important; border-color: var(--solace-border) !important; }
+html[data-theme] :is(input,textarea,select,.form-control,.form-select)::placeholder { color: var(--solace-muted) !important; opacity: 1; }
+html[data-theme] :is(.navbar-nav .nav-link,.logo,.navbar-brand) { color: var(--solace-text) !important; }
+html[data-theme] a:not(.btn) { color: var(--solace-accent); }
+html[data-theme] .navbar-toggler { border-color: var(--solace-border) !important; }
+html[data-theme="dark"] .navbar-toggler-icon { filter: invert(1) grayscale(1); }
+html[data-theme] :is(.menu-filter-button,.clear-order-button,.theme-toggle,.a6-copy-button,.menu-search-history-item,.menu-search-history-clear) { background-color: var(--solace-surface-soft); color: var(--solace-text); border-color: var(--solace-border); }
+html[data-theme] :is(.menu-filter-button.is-active,.menu-filter-button:hover) { background-color: var(--solace-accent) !important; color: #fff !important; border-color: var(--solace-accent) !important; }
+html[data-theme] :is(.a6-search-suggestions,.a6-suggestion-option,.a6-no-suggestions) { background-color: var(--solace-surface) !important; color: var(--solace-text) !important; border-color: var(--solace-border) !important; }
+html[data-theme] :is(.field-error,.form-message.error,.contact-form-message.error) { color: #d86e62 !important; }
+html[data-theme] :is(.form-message.success,.contact-form-message.success) { color: #4caa79 !important; }
+html[data-theme="dark"] .search-highlight { background: #80603d; color: #fff7ed !important; }
+.theme-toggle { border: 1px solid var(--solace-border); border-radius: 30px; padding: 8px 13px; cursor: pointer; transition: transform .2s, background-color .2s, color .2s; }
+.theme-toggle:hover { transform: translateY(-2px); }
+.menu-search-history { display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-top:9px; padding:10px 12px; border:1px solid var(--solace-border); border-radius:12px; }
+.menu-search-history[hidden], [hidden] { display:none !important; }
+.menu-search-history-label { font-size:.78rem; font-weight:600; margin-right:3px; }
+.menu-search-history-item,.menu-search-history-clear { border:1px solid var(--solace-border); border-radius:20px; padding:5px 11px; font-size:.8rem; cursor:pointer; }
+.menu-search-history-clear { text-decoration:underline; background:transparent !important; }
+.menu-search-status { min-height:1.35rem; margin:8px 2px 0; font-size:.86rem; text-align:center; color:var(--solace-muted); }
+.account-page { min-height:65vh; padding:65px 16px; display:grid; place-items:center; }
+.account-card { width:min(100%,480px); padding:clamp(24px,5vw,42px); border:1px solid var(--solace-border); border-radius:22px; box-shadow:0 18px 50px #38251512; }
+.account-card h1 { font-family:'Playfair Display',serif; }
+.account-card label { display:block; margin:17px 0 7px; }
+.account-card .form-control { padding:12px; }
+.account-card a { color:var(--solace-accent); }
+.field-error { display:block; color:#c35b4d; min-height:18px; font-size:.82rem; }
+.form-message { margin-top:12px; }
+.form-message.success { color:#34845b; }
+.form-message.error { color:#c35b4d; }
+.profile-details { border-radius:14px; padding:18px; line-height:2; }
+.weather-section { padding:3rem 0; }
+.weather-card { border:1px solid var(--solace-border); border-radius:24px; padding:clamp(24px,5vw,48px); display:flex; align-items:center; justify-content:space-between; gap:25px; }
+.weather-card h2 { font-family:'Playfair Display',serif; }
+.weather-status { color:var(--solace-muted); margin-top:15px; }
+.weather-temperature { font-size:2.5rem; font-weight:600; }
+.weather-recommendation { margin-top:12px; padding:12px 16px; border-radius:12px; }
+.weather-art { font-size:6rem; position:relative; }
+.weather-art span { font-size:3.5rem; display:block; margin-left:35px; }
+.site-footer { border-top:1px solid var(--solace-border); }
+@media(max-width:600px) { .weather-card { flex-direction:column; align-items:flex-start; } .weather-art { font-size:4rem; align-self:flex-end; } .account-page { padding:35px 14px; } }
+@media(prefers-reduced-motion:reduce) { html[data-theme] *, html[data-theme] *::before, html[data-theme] *::after { transition-duration:.01ms !important; animation-duration:.01ms !important; scroll-behavior:auto !important; } }
+/* Dark equivalents for legacy decorative gradient panels. */
+html[data-theme="dark"] :is(.tea-card-art,.menu-card-art,.dessert-card-art) {
+  background: linear-gradient(135deg, #3a3028, #211b16) !important;
+  color: #f4ece4 !important;
+}
+html[data-theme="dark"] .solace-faq__answer,
+html[data-theme="dark"] .a6-search-suggestions,
+html[data-theme="dark"] .a6-suggestion-option,
+html[data-theme="dark"] .a6-no-suggestions {
+  background-color: #2b241e !important;
+  color: #f4ece4 !important;
+  border-color: #514337 !important;
+}
+html[data-theme="dark"] .form-progress-step:not(.is-current) {
+  background-color: #352b23 !important;
+  color: #e7d9cc !important;
+}
+html[data-theme="dark"] .form-progress-step.is-current {
+  background-color: #8c6447 !important;
+  color: #ffffff !important;
 }
