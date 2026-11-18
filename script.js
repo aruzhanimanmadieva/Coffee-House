@@ -190,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return;
             }
 
-            if (!subscriberEmail.checkValidity()) {
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(subscriberEmail.value.trim())) {
                 subscriptionMessage.textContent = "Please enter a valid email address.";
                 return;
             }
@@ -726,13 +726,13 @@ document.addEventListener("DOMContentLoaded", function () {
             fields.forEach(function (field) {
                 field.classList.remove("is-invalid");
 
-                if (field.required && !field.value.trim()) {
+                if ((field.id === "name" || field.id === "email" || field.tagName === "TEXTAREA") && !field.value.trim()) {
                     field.classList.add("is-invalid");
                     valid = false;
                 } else if (
-                    field.type === "email" &&
+                    field.id === "email" &&
                     field.value &&
-                    !field.checkValidity()
+                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())
                 ) {
                     field.classList.add("is-invalid");
                     valid = false;
@@ -1078,6 +1078,9 @@ $(document).on("click", "#greetingButton", function () {
 
         function chooseSuggestion(item) {
             $searchInput.val(item.name);
+            // Notify the final-project search so the matching cards are filtered too.
+            $searchInput.trigger("input");
+            $searchInput.trigger("change");
             closeSuggestions();
 
             // If the chosen item is in a filtered-out category, activate its category first.
@@ -1251,3 +1254,8 @@ $(document).on("click", "#greetingButton", function () {
         loadImagesNearViewport();
     }, 0);
 });
+
+
+
+
+
