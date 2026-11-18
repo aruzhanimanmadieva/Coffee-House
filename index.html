@@ -993,14 +993,14 @@ TASK 3: POPUP SUBSCRIPTION FORM -->
         <h2 id="popupTitle">Stay Connected</h2>
         <p>Subscribe to receive coffee news and special updates.</p>
 
-        <form id="subscriptionForm">
+        <form id="subscriptionForm" novalidate>
             <label for="subscriberName">Your Name</label>
             <input type="text" id="subscriberName"
-                   placeholder="Enter your name" required>
+                   placeholder="Enter your name">
 
             <label for="subscriberEmail">Email Address</label>
-            <input type="email" id="subscriberEmail"
-                   placeholder="example@email.com" required>
+            <input type="text" id="subscriberEmail"
+                   placeholder="example@email.com">
 
             <button type="submit" class="main-button popup-submit">
                 Subscribe
@@ -1110,6 +1110,6 @@ TASK 3: POPUP SUBSCRIPTION FORM -->
 <!-- Our JavaScript -->
 <script src="js/script.js"></script>
 
-<script src="js/final.js"></script>
+<script src="final.js"></script>
 </body>
 </html>
