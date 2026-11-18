@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('solaceTheme')||'light'}catch(e){document.documentElement.dataset.theme='light'}</script>
 
     <meta charset="UTF-8">
 
@@ -126,6 +127,16 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">My Profile</a>
+                </li>
+
 
                 <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
 
@@ -139,6 +150,9 @@
 
                 </li>
 
+                <li class="nav-item"><a class="nav-link" href="login.html">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                <li class="nav-item ms-lg-2"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">🌙 <span>Dark</span></button></li>
             </ul>
 
         </div>
@@ -351,7 +365,8 @@
                                 id="name"
                                 name="name"
                                 placeholder="Enter your name"
-                                required>
+                               >
+                            <div class="mt-3"><label for="phone" class="form-label">Phone number</label><input type="text" class="form-control" id="phone" name="phone" inputmode="tel" placeholder="+7 700 123 45 67" aria-describedby="phoneError"><small class="field-error" id="phoneError">Enter a phone number including country code.</small></div>
 
                         </div>
 
@@ -378,13 +393,13 @@
                                 </span>
 
                                 <input
-                                    type="email"
+                                    type="text" inputmode="email"
                                     class="form-control"
                                     id="email"
                                     name="email"
                                     placeholder="Enter your email"
                                     aria-describedby="email-icon"
-                                    required>
+                                   >
 
                             </div>
 
@@ -558,7 +573,7 @@
                                 class="form-control"
                                 rows="5"
                                 placeholder="Write your message here..."
-                                required></textarea>
+                               ></textarea>
 
                         </div>
 
@@ -696,6 +711,7 @@
 
     </div>
 
+<div class="container footer-account-links text-center pb-3"><a href="login.html">Log In</a><span aria-hidden="true"> · </span><a href="signup.html">Sign Up</a></div>
 </footer>
 
 
@@ -706,5 +722,6 @@
 
 <script src="script.js"></script>
 
+<script src="final.js"></script>
 </body>
 </html>
