@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+<script>try{document.documentElement.dataset.theme=localStorage.getItem('solaceTheme')||'light'}catch(e){document.documentElement.dataset.theme='light'}</script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -82,12 +82,25 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link" href="signup.html">Sign Up</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="login.html">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile.html">My Profile</a>
+                </li>
+
                 <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
                     <a class="nav-order" href="contact.html">
                         Order Now
                     </a>
                 </li>
 
+                <li class="nav-item"><a class="nav-link" href="login.html">Log In</a></li>
+                <li class="nav-item"><a class="nav-link" href="signup.html">Sign Up</a></li>
+                <li class="nav-item ms-lg-2"><button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch color theme">🌙 <span>Dark</span></button></li>
             </ul>
 
         </div>
@@ -152,7 +165,7 @@
                 type="search"
                 id="menuAutocompleteInput"
                 class="form-control a6-search-input"
-                placeholder="Start typing a drink or dessert..."
+                placeholder="Search coffee, tea or desserts..."
                 autocomplete="off"
                 aria-autocomplete="list"
                 aria-controls="menuAutocompleteSuggestions"
@@ -163,6 +176,8 @@
                 role="listbox"
                 aria-label="Menu suggestions"
                 hidden></div>
+            <div id="menuSearchHistory" class="menu-search-history" hidden aria-label="Recent searches"></div>
+            <p id="menuSearchStatus" class="menu-search-status" role="status" aria-live="polite"></p>
         </div>
 
         <div class="menu-filter-controls" role="group" aria-label="Filter products by category">
@@ -929,6 +944,17 @@
 
 <!-- ================= FOOTER ================= -->
 
+
+<section class="weather-section py-5" id="coffeeWeather">
+ <div class="container"><div class="weather-card">
+  <div class="weather-copy"><p class="small-title">A LITTLE WEATHER INSPIRATION</p><h2>Today's coffee forecast</h2><p>Let the weather help you choose something lovely.</p>
+   <div id="weatherStatus" class="weather-status" role="status" aria-live="polite">Checking the weather...</div>
+   <div id="weatherResult" hidden><div class="weather-temperature" id="weatherTemperature"></div><div id="weatherDescription"></div><p class="weather-recommendation" id="weatherRecommendation"></p></div>
+   <button class="btn btn-primary solace-btn mt-3" id="refreshWeather" type="button">Refresh weather</button>
+  </div><div class="weather-art" aria-hidden="true">☁️<span>☕</span></div>
+ </div></div>
+</section>
+
 <footer class="footer">
 
     <div class="container">
@@ -965,6 +991,7 @@
 
     </div>
 
+<div class="container footer-account-links text-center pb-3"><a href="login.html">Log In</a><span aria-hidden="true"> · </span><a href="signup.html">Sign Up</a></div>
 </footer>
 
 
@@ -975,5 +1002,6 @@
 
 <script src="script.js"></script>
 
+<script src="final.js"></script>
 </body>
 </html>
