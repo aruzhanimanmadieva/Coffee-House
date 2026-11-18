@@ -36,10 +36,17 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
         rel="stylesheet">
 
-
+    <script>
+try {
+  document.documentElement.dataset.theme =
+    localStorage.getItem('solaceTheme') || 'light';
+} catch (error) {
+  document.documentElement.dataset.theme = 'light';
+}
+</script>
     <!-- Main CSS -->
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -133,6 +140,17 @@
                     </a>
 
                 </li>
+                <li class="nav-item">
+    <a class="nav-link" href="signup.html">Sign Up</a>
+</li>
+
+               <li class="nav-item">
+    <a class="nav-link" href="login.html">Log In</a>
+</li>
+
+               <li class="nav-item">
+    <a class="nav-link" href="profile.html">My Profile</a>
+</li>
 
 
                 <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
@@ -146,6 +164,13 @@
                     </a>
 
                 </li>
+<li class="nav-item ms-lg-2">
+  <button class="theme-toggle"
+          type="button"
+          data-theme-toggle>
+    🌙 <span>Dark</span>
+  </button>
+</li>
 
             </ul>
 
@@ -911,50 +936,6 @@
 
 </section>
 
-<!-- ASSIGNMENT 4. TASK 1: FORM VALIDATION -->
-<section class="signup-section">
-    <div class="signup-container">
-        <p class="section-label">SOLACE COFFEE HOUSE</p>
-        <h2>Create Your Account</h2>
-        <p class="signup-description">
-            Join our coffee community and enjoy every moment with us.
-        </p>
-
-        <form id="signupForm" novalidate>
-
-            <div class="signup-field">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" placeholder="Enter your full name" required>
-                <small class="error-message" id="nameError"></small>
-            </div>
-
-            <div class="signup-field">
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="example@email.com">
-                <small class="error-message" id="emailError"></small>
-            </div>
-
-            <div class="signup-field">
-                <label for="password">Password</label>
-                <input type="password" id="password" placeholder="At least 8 characters">
-                <small class="error-message" id="passwordError"></small>
-            </div>
-
-            <div class="signup-field">
-                <label for="confirmPassword">Confirm Password</label>
-                <input type="password" id="confirmPassword" placeholder="Enter password again">
-                <small class="error-message" id="confirmPasswordError"></small>
-            </div>
-
-            <button type="submit" class="main-button signup-button">
-                Create Account
-            </button>
-
-            <p id="formMessage" class="form-message" role="status"></p>
-        </form>
-    </div>
-</section>
-
 <!-- ================= CTA ================= -->
 
 <section class="about-final">
@@ -964,9 +945,8 @@
         <div class="about-final-inner">
 
             <div>
-
                 <p class="about-kicker">
-                    COME VISIT US
+                    YOUR NEXT MOMENT STARTS HERE
                 </p>
 
                 <h2>
@@ -974,26 +954,27 @@
                     <em>at home.</em>
                 </h2>
 
+                <p class="about-final-description">
+                    Discover our menu, meet our coffee community
+                    and create your own Solace experience.
+                </p>
             </div>
 
+            <div class="about-final-buttons">
+                <a href="menu.html" class="btn-solace">
+                    Explore Menu <span>→</span>
+                </a>
 
-            <a
-                href="contact.html"
-                class="btn-solace">
-
-                Contact Us
-
-                <span>→</span>
-
-            </a>
+                <a href="signup.html" class="btn-solace">
+                    Join Solace <span>→</span>
+                </a>
+            </div>
 
         </div>
 
     </div>
 
 </section>
-
-
 
 <!-- ================= FOOTER ================= -->
 
@@ -1043,6 +1024,9 @@
 <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 
 <!-- Our JavaScript -->
-<script src="script.js"></script>
+<script src="js/script.js"></script>
+
+<script src="final.js"></script>
+
 </body>
 </html>
