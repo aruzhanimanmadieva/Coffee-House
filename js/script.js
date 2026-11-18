@@ -3,74 +3,7 @@
 */
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ---------- Account form validation ----------
-    const signupForm = document.getElementById("signupForm");
-
-    if (signupForm) {
-        signupForm.addEventListener("submit", function (event) {
-            event.preventDefault();
-
-            const name = document.getElementById("fullName");
-            const email = document.getElementById("email");
-            const password = document.getElementById("password");
-            const confirmPassword = document.getElementById("confirmPassword");
-            const nameError = document.getElementById("nameError");
-            const emailError = document.getElementById("emailError");
-            const passwordError = document.getElementById("passwordError");
-            const confirmError = document.getElementById("confirmPasswordError");
-            const message = document.getElementById("formMessage");
-
-            if (![name, email, password, confirmPassword, nameError, emailError, passwordError, confirmError, message].every(Boolean)) return;
-
-            [nameError, emailError, passwordError, confirmError, message].forEach(function (element) {
-                element.textContent = "";
-            });
-
-            [name, email, password, confirmPassword].forEach(function (input) {
-                input.classList.remove("invalid");
-            });
-
-            let valid = true;
-
-            if (name.value.trim().length < 2) {
-                nameError.textContent = "Please enter your name.";
-                name.classList.add("invalid");
-                valid = false;
-            }
-
-            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
-                emailError.textContent = "Please enter a valid email.";
-                email.classList.add("invalid");
-                valid = false;
-            }
-
-            if (password.value.length < 8) {
-                passwordError.textContent = "Password must contain at least 8 characters.";
-                password.classList.add("invalid");
-                valid = false;
-            }
-
-            if (!confirmPassword.value) {
-                confirmError.textContent = "Please confirm your password.";
-                confirmPassword.classList.add("invalid");
-                valid = false;
-            } else if (password.value !== confirmPassword.value) {
-                confirmError.textContent = "Passwords do not match.";
-                confirmPassword.classList.add("invalid");
-                valid = false;
-            }
-
-            message.textContent = valid
-                ? "Success! Your form has been validated."
-                : "Please correct the errors above.";
-
-            message.className = valid
-                ? "form-message success"
-                : "form-message error";
-
-            if (valid) signupForm.reset();
-        });
-    }
+    
 
     // ---------- FAQ accordion ----------
     const faq = document.getElementById("solace-faq");
