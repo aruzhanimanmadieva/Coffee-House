@@ -16,6 +16,7 @@
     <title>Solace Coffee House | Home</title>
 
 
+
     <!-- Bootstrap CSS -->
 
     <link
@@ -36,10 +37,17 @@
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
         rel="stylesheet">
 
-
+<script>
+try {
+  document.documentElement.dataset.theme =
+    localStorage.getItem('solaceTheme') || 'light';
+} catch (error) {
+  document.documentElement.dataset.theme = 'light';
+}
+</script>
     <!-- Custom CSS -->
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 
 </head>
 
@@ -136,7 +144,17 @@
                     </a>
 
                 </li>
+                <li class="nav-item">
+    <a class="nav-link" href="signup.html">Sign Up</a>
+               </li>
 
+               <li class="nav-item">
+    <a class="nav-link" href="login.html">Log In</a>
+               </li>
+
+                <li class="nav-item">
+    <a class="nav-link" href="profile.html">My Profile</a>
+</li>
 
                 <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
 
@@ -149,6 +167,13 @@
                     </a>
 
                 </li>
+                <li class="nav-item ms-lg-2">
+  <button class="theme-toggle"
+          type="button"
+          data-theme-toggle>
+    🌙 <span>Dark</span>
+  </button>
+</li>
 
             </ul>
 
@@ -1002,6 +1027,39 @@ TASK 3: POPUP SUBSCRIPTION FORM -->
         </div>
     </div>
 </section>
+
+<!-- ================= ACCOUNT CTA ================= -->
+
+<section class="home-account-section">
+    <div class="container">
+        <div class="home-account-content">
+
+            <p class="small-label">BECOME PART OF SOLACE</p>
+
+            <h2>
+                Your coffee moments
+                <em>start here.</em>
+            </h2>
+
+            <p>
+                Create your account and become part of our coffee community.
+                Enjoy a welcoming space, discover your favorite drinks
+                and make every visit special.
+            </p>
+
+            <div class="home-account-buttons">
+                <a href="signup.html" class="btn-solace">
+                    Create Account <span>→</span>
+                </a>
+
+                <a href="login.html" class="simple-link">
+                    Already a member? Log In
+                </a>
+            </div>
+
+        </div>
+    </div>
+</section>
 <!-- ================= FOOTER ================= -->
 
 <footer class="footer">
@@ -1050,6 +1108,8 @@ TASK 3: POPUP SUBSCRIPTION FORM -->
 <script src="https://code.jquery.com/jquery-4.0.0.min.js"></script>
 
 <!-- Our JavaScript -->
-<script src="script.js"></script>
+<script src="js/script.js"></script>
+
+<script src="final.js"></script>
 </body>
 </html>
