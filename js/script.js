@@ -643,47 +643,70 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
 
-        function validateCurrentStep() {
-            const activeStep = steps[currentStep - 1];
+     function validateCurrentStep() {
+    const activeStep = steps[currentStep - 1];
 
-            const fields = Array.from(
-                activeStep.querySelectorAll("input, select, textarea")
-            ).filter(function (field) {
-                return field.type !== "radio" &&
-                    field.type !== "checkbox" &&
-                    field.type !== "color";
-            });
+    const fields = Array.from(
+        activeStep.querySelectorAll("input, select, textarea")
+    ).filter(function (field) {
+        return field.type !== "radio" &&
+            field.type !== "checkbox" &&
+            field.type !== "color";
+    });
 
-            let valid = true;
+    let valid = true;
 
-            fields.forEach(function (field) {
-                field.classList.remove("is-invalid");
+    fields.forEach(function (field) {
+        field.classList.remove("is-invalid");
 
-                if ((field.id === "name" || field.id === "email" || field.tagName === "TEXTAREA") && !field.value.trim()) {
-                    field.classList.add("is-invalid");
-                    valid = false;
-                } else if (
-                    field.id === "email" &&
-                    field.value &&
-                    !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(field.value.trim())
-                ) {
-                    field.classList.add("is-invalid");
-                    valid = false;
-                }
-            });
+        const value = field.value.trim();
 
-            if (!valid && formMessage) {
-                formMessage.textContent =
-                    "Please complete the required fields correctly before continuing.";
-                formMessage.className = "contact-form-message error";
-
-                const firstInvalid = activeStep.querySelector(".is-invalid");
-
-                if (firstInvalid) firstInvalid.focus();
-            }
-
-            return valid;
+        if (
+            (field.id === "name" ||
+             field.id === "email" ||
+             field.id === "phone" ||
+             field.tagName === "TEXTAREA") &&
+            !value
+        ) {
+            field.classList.add("is-invalid");
+            valid = false;
         }
+
+        if (
+            field.id === "email" &&
+            value &&
+            !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)
+        ) {
+            field.classList.add("is-invalid");
+            valid = false;
+        }
+
+        if (field.id === "phone" && value) {
+            const digits = value.replace(/\D/g, "");
+
+            if (
+                !/^\+?[0-9\s()-]+$/.test(value) ||
+                digits.length < 10 ||
+                digits.length > 15
+            ) {
+                field.classList.add("is-invalid");
+                valid = false;
+            }
+        }
+    });
+
+    if (!valid && formMessage) {
+        formMessage.textContent =
+            "Please complete the required fields correctly before continuing.";
+        formMessage.className = "contact-form-message error";
+
+        const firstInvalid = activeStep.querySelector(".is-invalid");
+
+        if (firstInvalid) firstInvalid.focus();
+    }
+
+    return valid;
+}
 
         contactForm.querySelectorAll("[data-next-step]").forEach(function (button) {
             button.addEventListener("click", function () {
