@@ -3166,3 +3166,223 @@ html[data-theme="dark"] .form-progress-step.is-current {
   background-color: #8c6447 !important;
   color: #ffffff !important;
 }
+/* ===== FINAL PROJECT.
+ SIGN UP AND LOGIN PAGES ===== */
+.signup-section {
+    min-height: 75vh;
+    padding: 70px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--cream-light, #fffaf3);
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+.signup-container h2 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+.signup-description {
+    text-align: center;
+    color: #777;
+    margin-bottom: 28px;
+}
+
+.section-label {
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 12px;
+    color: #a47b5b;
+}
+
+.signup-field {
+    margin-bottom: 18px;
+}
+
+.signup-field label {
+    display: block;
+    margin-bottom: 7px;
+    font-weight: 600;
+}
+
+.signup-field input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.signup-field input:focus {
+    border-color: #a47b5b;
+    box-shadow: 0 0 0 3px rgba(164, 123, 91, 0.15);
+}
+
+.error-message {
+    display: block;
+    color: #d63333;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.form-message {
+    text-align: center;
+    margin-top: 15px;
+    font-weight: 500;
+}
+
+.signup-button {
+    width: 100%;
+    margin-top: 10px;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.signup-button:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.signup-container a {
+    color: #a47b5b;
+    font-weight: 600;
+}
+
+/* ===== PROFILE PAGE ===== */
+
+.profile-avatar {
+    width: 85px;
+    height: 85px;
+    margin: 25px auto;
+    border-radius: 50%;
+    background-color: #eee5dc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 38px;
+}
+
+.profile-details {
+    background-color: #f7f3ef;
+    padding: 18px;
+    border-radius: 10px;
+    margin: 25px 0;
+    text-align: left;
+}
+
+.profile-details p {
+    margin-bottom: 12px;
+    overflow-wrap: anywhere;
+}
+
+.profile-details p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== MOBILE RESPONSIVENESS ===== */
+
+@media (max-width: 576px) {
+    .signup-section {
+        padding: 35px 15px;
+    }
+
+    .signup-container {
+        padding: 25px 20px;
+    }
+
+    .signup-container h2 {
+        font-size: 26px;
+    }
+}
+/* HOME ACCOUNT SECTION */
+
+.home-account-section {
+    padding: 90px 20px;
+    background: #eee5dc;
+    text-align: center;
+}
+
+.home-account-content {
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+.home-account-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 52px);
+    margin: 20px 0;
+}
+
+.home-account-content h2 em {
+    color: #a47b5b;
+}
+
+.home-account-content > p:not(.small-label) {
+    max-width: 600px;
+    margin: 0 auto 25px;
+    line-height: 1.8;
+    color: #665b52;
+}
+
+.home-account-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+    .home-account-section {
+        padding: 60px 18px;
+    }
+
+    .home-account-buttons {
+        flex-direction: column;
+        gap: 18px;
+    }
+}
+/* IMPROVED ABOUT CTA */
+
+.about-final-description {
+    max-width: 500px;
+    margin-top: 18px;
+    line-height: 1.8;
+}
+
+.about-final-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.about-final-buttons .btn-solace {
+    text-decoration: none;
+}
+
+@media (max-width: 576px) {
+    .about-final-inner {
+        gap: 25px;
+    }
+
+    .about-final-buttons {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .about-final-buttons .btn-solace {
+        text-align: center;
+    }
+}
+
